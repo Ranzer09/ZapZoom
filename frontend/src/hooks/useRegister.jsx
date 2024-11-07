@@ -14,6 +14,7 @@ export const useRegister=()=>{
         setError(null)      //reset the error property to be false in the start
 
         //send post request to create user
+        try{
         const response=await fetch('/api/user/register',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
@@ -28,7 +29,12 @@ export const useRegister=()=>{
             setError(json.error)
             console.log('here is the error',json)
         }
-
+    }
+    catch(err)
+        {
+            console.log(err)
+        }
+    
         if(response.ok){
             //save the user to local storage
             localStorage.setItem('user',JSON.stringify(json))
