@@ -1,0 +1,26 @@
+.carter {
+    position: relative;
+    display: inline-block; /* Ensures the container wraps the image */
+}
+
+.cart-image {
+    width: 50px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.cart-count {
+    position: absolute;
+    top: 0; /* Adjust as needed */
+    right: 0; /* Adjust as needed */
+    background-color: red; /* Optional, for visibility */
+    color: white; /* Text color */
+    padding: 2px 5px; /* Space around the text */
+    border-radius: 50%; /* Optional, makes it circular */
+    font-weight: bold; /* Make it stand out */
+    font-size: 10px;
+}
+
+.bottom{
+    justify-self: center;
+
+}
