@@ -14,7 +14,8 @@ export const useLogin=()=>{
         setError(null)      //reset the error property to be false in the start
 
         //send post request to create user
-        const response=await fetch('/api/user/login',{
+        try
+        {const response=await fetch('/api/user/login',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({email,password})
@@ -37,6 +38,10 @@ export const useLogin=()=>{
             setLoading(false)
             navigate('/Api/products')
             console.log('good')
+        }}
+        catch(err)
+        {
+            console.log(err)
         }
     }
     return{login,Loading,Error}

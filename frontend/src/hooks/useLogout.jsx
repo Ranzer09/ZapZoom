@@ -9,12 +9,17 @@ const navigate = useNavigate()
 
     const logout=()=>{
         //remove from local storage
-        localStorage.removeItem('user')
+       try
+       { localStorage.removeItem('user')
         //remove cart context
         cartDispatch({type:'CLEAR_CART'})
         //dispatch logout action
         dispatch({type:'LOGOUT'})
-        navigate('/')
+        navigate('/')}
+        catch(err)
+        {
+            console.log(err)
+        }
 
     }
     return {logout}

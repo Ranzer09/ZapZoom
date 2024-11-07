@@ -29,11 +29,7 @@ export const useRegister=()=>{
             setError(json.error)
             console.log('here is the error',json)
         }
-    }
-    catch(err)
-        {
-            console.log(err)
-        }
+   
     
         if(response.ok){
             //save the user to local storage
@@ -45,6 +41,11 @@ export const useRegister=()=>{
             //create a cart for the user
             
             navigate('/Api/products')
+        }
+    }
+    catch(err)
+        {
+            console.log(err)
         }
     }
     return{register,Loading,Error}

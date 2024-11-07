@@ -29,7 +29,9 @@ export default function Header() {
       <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white no-underline">Zamazon</span>
      </Link>
      {user&&<span className="mx-3">
-      <Minicart/>
+      <Link className='' to={!user?'/':'/Api/cart'}>
+              <Minicart/>
+            </Link>
       </span>}
         {isNavOpen?(!user?(
             <>
