@@ -9,8 +9,7 @@
     border-radius: 2rem; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
-  
-  .product-card img{
+.product-card img{
     width: fit-content;
     height: 100px;
   }
@@ -19,25 +18,21 @@
     font-weight: 600; 
     cursor: pointer;
   }
-
 @media (min-width: 1024px) { 
       .product-name {
           font-size: 1.25rem; 
       }
     }
-  
 .product-price
  {
     font-size: 0.875rem; 
     color: #2d3748; 
 }
-
 @media (min-width: 1024px) { 
     .product-price {
         font-size: 1.125rem; 
     }
 }
-  
 .delete-button {
     background-color: #c40000; 
     color: white;
@@ -47,40 +42,8 @@
     width: fit-content;
     transition: all 0.3s ease; /* Smooth transition */
   }
-
-  .qty-button {
-    display:inline;
-    padding:0.2rem;
-    margin-top: 7px;
-    background-color:rgb(224, 154, 23);
-    border-radius: 0.5rem;
-    height: fit-content;
-    width: 20px;
-    transition: all 0.3s ease; /* Smooth transition */
-    font-size: 12px;
-}
-
-@media (min-width: 708px) { 
-  .qty-button {
-    font-size: 15px;
-    margin-top: 5px;
-}
-}
-
-
-.qty-button:hover {
-    background-color: #ff7c11; 
-    transform: scale(1.05); 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-}
-
 .delete-button:hover {
   background-color: #ff0000; 
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-}
-
-.add-button{
-  background-color: #f7ca00;
-  border-radius: 10px;
 }

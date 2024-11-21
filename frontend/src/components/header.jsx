@@ -1,19 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useLogout } from "../hooks/useLogout";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogout } from "../hooks/Auth/useLogout";
+import { useAuthContext } from "../hooks/Auth/useAuthContext";
 import { Button } from "flowbite-react";
-
-import { useState } from "react"; // import state
-import Minicart from "./miniCart";
+import { useCartContext } from "../hooks/useCartContext";
+import { useState,useEffect } from "react";
+import Minicart from "./cart/miniCart";
 
 export default function Header() {
     const {logout}=useLogout()
     const {user,loading}=useAuthContext()
-    console.log('reloaded header')
-    const handleClick=()=>{
-        logout()
+    const {cart,total_price,total_qty}=useCartContext()
+
+    useEffect(()=>{
+      console.log('header reloaded')
+  },[cart])
+
+    const handleLogout=()=>{
+        logout();
     }
+
   const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
   if (loading) {
     return <div>Loading...</div>; // Or your loading spinner
@@ -23,16 +29,22 @@ export default function Header() {
     <div className="flex items-start  border-b border-gray-400 bg-gray-200 py-4 px-2">
      
       <nav className="w-full">
-        
+
+
+        {/* Mobile Menu */}
+
+      
         <section className="MOBILE-MENU flex justify-between items-baseline lg:hidden w-full ">          
         <Link className="flex-1 no-underline text-black" to={!user?'/':'/Api/products'}>
-      <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white no-underline">Zamazon</span>
+      <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white no-underline">ZapZoom</span>
      </Link>
-     {user&&<span className="mx-3">
-      <Link className='' to={!user?'/':'/Api/cart'}>
+     {user&&
+     <span className="mx-3">
+      <Link className='no-underline' to={!user?'/':'/Api/cart'}>
               <Minicart/>
             </Link>
-      </span>}
+      </span>
+      }
         {isNavOpen?(!user?(
             <>
             <Button className="w-fit mx-1 px-0 text-md flex-none" href='/Api/user/login'>Login</Button>
@@ -70,7 +82,7 @@ export default function Header() {
             </div>
             <ul className="MENU-LINK-MOBILE-OPEN flex  flex-col items-center justify-between min-h-[250px] ">
             <Button className='flex-1 no-underline text-black bg-transparent border-0' href={!user?'/':'/Api/products'}>
-              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white no-underline">Zamazon</span>
+              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white no-underline">ZapZoom</span>
             </Button>
             {!user?(
             <>
@@ -80,19 +92,39 @@ export default function Header() {
         ):
             (<>  
             <p className="flex-none">{user.email}</p>
-            <Button className="flex-none" onClick={handleClick}>Logout</Button>
+            <Button className="flex-none" onClick={handleLogout}>Logout</Button>
             </>)}
               <li className="border-0 border-gray-400 my-8 uppercase grid gap-2">  
                 <a className="no-underline my-2" href="/Api/products">Home</a>
                 <a className='no-underline' href="/Api/cart">Cart</a>
+                <a href="/admin" >
+                  Admin Dashboard
+                </a>
+                <a href="/admin/products/add" >
+                  New Product
+                </a>
+                <a href="#">
+                  Products
+                </a>
+                <a href="#">
+                  Users
+                </a>
+                <a href="#" >
+                  Businesses
+                </a>
               </li>
             </ul>
           </div>
         </section>
 
+
+
+{/* Desktop menu */}
+
+
         <ul className="DESKTOP-MENU hidden justify-between  space-x-8 lg:flex items-baseline">
         <Link className='flex-1 no-underline text-black' to={!user?'/':'/Api/products'}>
-      <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white ">Zamazon</span>
+      <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white ">ZapZoom</span>
      </Link>
      
         {!user?(
@@ -102,11 +134,13 @@ export default function Header() {
             </>
         ):  
             (<>  
-            <Link className='' to={!user?'/':'/Api/cart'}>
+           <span className="mx-3">
+            <Link className='no-underline' to={!user?'/':'/Api/cart'}>
               <Minicart/>
             </Link>
+            </span>
             <p className="flex-none">{user.email}</p>
-            <Button className='flex-none' onClick={handleClick}>Logout</Button>
+            <Button className='flex-none' onClick={handleLogout}>Logout</Button>
             </>)}
 
         </ul>

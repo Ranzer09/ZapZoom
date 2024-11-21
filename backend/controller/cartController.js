@@ -68,14 +68,14 @@ const createOrUpdateCart = async (req, res) => {
                 price: item.price
             }));
             cart = new Cart({ email, cart: formattedProducts }); // Use 'cart' field to store products
-        } else {
-            // Update existing cart
+        } else // Update existing cart
+        {
             products.forEach(item => {
                 console.log(item,'item')
                 const existingProduct = cart.cart.find(p => p._id.toString() === item.id);
                 console.log(existingProduct,'existing product')
                 if (existingProduct) {
-                    existingProduct.qty += item.qty; // Increment quantity
+                    existingProduct.qty = item.qty; // Update the quantity
                     if(existingProduct.qty<1)
                         // Remove product
                         cart.cart = cart.cart.filter(p => p._id.toString() !== item.id);

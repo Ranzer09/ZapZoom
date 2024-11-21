@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const userRoutes= require('./routes/user')
 const productRoutes= require('./routes/products')
 const cartRoutes= require('./routes/cart')
+const businessRoutes= require('./routes/business')
 require('dotenv').config()
 
 const app = express();
@@ -28,4 +29,5 @@ app.get('/', (req, res) => {
 app.use('/api/user/',userRoutes)
 app.use('/api/products/',productRoutes)
 app.use('/api/cart/',cartRoutes)
+app.use('/api/business/',businessRoutes)
   

@@ -1,15 +1,21 @@
-import cartIcon from '../assets/cart.png'
+import cartIcon from '../../assets/cart.png'
 import {useState,useEffect} from 'react'
-import './styles/miniCart.css'
-import { useCartContext } from '../hooks/useCartContext'
-import { useAuthContext } from '../hooks/useAuthContext'
+import '../styles/miniCart.css'
+import { useCartContext } from '../../hooks/useCartContext'
+import { useAuthContext } from '../../hooks/Auth/useAuthContext'
 
 function Minicart(){
     const {cart,total_price,total_qty}=useCartContext()
-    const {user}=useAuthContext()
-    const [loading, setLoading] = useState(true);
+    const {user,loading}=useAuthContext()
     const [error, setError] = useState(null);
-    
+
+    useEffect(()=>{
+        //console.log('cart',cart)
+    },[total_price,total_qty])
+    if(loading)
+            return(
+                <p>Loading...</p>
+        )
     let cost = 0
     let number = 0
     if(total_price&&total_qty)

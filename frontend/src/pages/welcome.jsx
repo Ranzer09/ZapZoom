@@ -3,7 +3,7 @@ import {useState,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { Button,Label, TextInput } from "flowbite-react";
 import { Navigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../hooks/Auth/useAuthContext";
 
 
 function Welcome() {
@@ -47,9 +47,9 @@ function Welcome() {
       }
 
       const result = await response.json();
-      console.log(result);
+      //console.log(result);
       setRegister(result.isRegistered);
-      console.log(result.isRegistered);
+      //console.log(result.isRegistered);
     } catch (error) {
       console.error("Error in checkEmail:", error.message);
     }

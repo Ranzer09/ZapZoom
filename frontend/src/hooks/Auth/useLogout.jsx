@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useAuthContext } from "./useAuthContext"
-import { useCartContext } from "./useCartContext"
+import { useCartContext } from "../useCartContext"
 
 export const useLogout=()=>{
 const{dispatch}=useAuthContext()
@@ -18,7 +18,7 @@ const navigate = useNavigate()
         navigate('/')}
         catch(err)
         {
-            console.log(err)
+            //console.log(err)
         }
 
     }

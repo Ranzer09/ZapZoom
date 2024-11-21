@@ -37,7 +37,7 @@ export const AuthContextProvider=({children})=>
         fetchUser();
     }, []);
 
-    console.log('Auth Context state:',state)
+    //console.log('Auth Context state:',state)
     if (loading) {
         return <div>Loading...</div>; // Or your loading spinner
     }

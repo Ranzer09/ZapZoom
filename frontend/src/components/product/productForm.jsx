@@ -1,6 +1,6 @@
 import {useState} from 'react'
-import { useProductContext } from '../hooks/useProduct'
-import {useAuthContext} from '../hooks/useAuthContext'
+import { useProductContext } from '../../hooks/useProduct'
+import {useAuthContext} from '../../hooks/Auth/useAuthContext'
 import { Button, Label, TextInput } from 'flowbite-react'
 const ProductForm=()=>{
 
@@ -23,20 +23,20 @@ const handleSubmit = async (e) => {
      }
 
     const product={name,qty,price,description,category}
-     console.log(product)
+     //console.log(product)
     const response = await fetch('/api/products',{
         method:'POST',
         body:JSON.stringify(product),
         headers:{'Content-Type':'application/json','authorization':`Bearer ${user.token}`}
     })
     const json=await response.json()
-    console.log(json)
+    //console.log(json)
     if(!response.ok){
         setError(json.error)
         if(json.EmptyFields)
             setEmptyFields(json.EmptyFields)
     }
-        console.log(Error,EmptyFields)
+        //console.log(Error,EmptyFields)
     if(response.ok)
     {   
         setDescription('')
@@ -47,14 +47,15 @@ const handleSubmit = async (e) => {
         setError(null)
         setEmptyFields(['empty'])
         dispatch({type:'CREATE_PRODUCT',payload:json})
-        console.log("It got uploaded!",json)
+        //console.log("It got uploaded!",json)
     }
 }
 if (loading) {
     return <div>Loading...</div>; // Or your loading spinner
 }
     return( 
-        <form action="" className="text-md creation grid w-1/4 h-fit my-4 border-gray-200 border-2 p-4 rounded-4 mx-auto shadow-lg col-end-1" onSubmit={handleSubmit}>
+        <div className='inline'>
+            <form action="" className="text-md creation grid w-full h-fit my-4 border-gray-200 border-2 p-4 rounded-4 mx-auto shadow-lg col-end-1" onSubmit={handleSubmit}>
             <h3 className="text-md">Add new Product</h3>
             
             <Label htmlFor="" className="text-md">
@@ -110,6 +111,7 @@ if (loading) {
             <Button className='mt-4' type='submit'> Add</Button>
             {Error && <p className='pt-4 text-red-800'>This error occured: {Error}</p>}
         </form>
+    </div>
     )
 }
 

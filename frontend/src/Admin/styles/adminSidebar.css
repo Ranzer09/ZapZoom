@@ -1,0 +1,19 @@
+.sidebar{
+    width: fit-content;
+    display: none;
+}
+
+.sidebar nav div div ul{
+    margin-top: 0px !important;
+}
+
+.sidebar nav div div ul a{
+    text-decoration: none;
+}
+
+@media (min-width: 708px) { 
+    .sidebar {
+        display:inline;
+  }
+  }
+  

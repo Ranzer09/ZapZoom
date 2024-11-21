@@ -1,21 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../hooks/useCartContext"
 import {useEffect} from 'react'
-import CartItem from "./cartItem"
-import './styles/cart.css'
-import { useAuthContext } from "../hooks/useAuthContext";
+import CartItem from "../components/cart/cartItem"
+import './Styles/cart.css'
+import { useAuthContext } from "../hooks/Auth/useAuthContext";
 
 function Cart(){
     const {user}=useAuthContext()
     const navigate = useNavigate()
-    
+    const {cart,total_price,total_qty}=useCartContext()
     useEffect(() => {
         if (!user) {
             navigate('/');
             return;
         }
     },[user])
-    const {cart,total_price,total_qty}=useCartContext()
     if (cart.length === 0) {
         return <div className="cart-empty">Cart is empty</div>;
     }

@@ -27,7 +27,7 @@ export const useRegister=()=>{
         {
             setLoading(false)
             setError(json.error)
-            console.log('here is the error',json)
+            //console.log('here is the error',json)
         }
    
     
@@ -45,7 +45,7 @@ export const useRegister=()=>{
     }
     catch(err)
         {
-            console.log(err)
+            //console.log(err)
         }
     }
     return{register,Loading,Error}

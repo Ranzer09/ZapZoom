@@ -1,7 +1,7 @@
 import {useState,useEffect} from "react";
 import { Button,Label,TextInput } from "flowbite-react";
-import { useRegister } from "../hooks/useRegister";
-import {useAuthContext} from '../hooks/useAuthContext'
+import { useRegister } from "../hooks/Auth/useRegister";
+import {useAuthContext} from '../hooks/Auth/useAuthContext'
 import { useNavigate,useLocation } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
@@ -26,11 +26,11 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(email,username,password)
+      //console.log(email,username,password)
       const response =await register(email, username, password);
-      console.log(response)
-      console.log(response,'loading',Loading)
-      console.log('error in register',Error)
+      //console.log(response)
+      //console.log(response,'loading',Loading)
+      //console.log('error in register',Error)
     } catch (error) {
       console.error("register failed:", error);
     }

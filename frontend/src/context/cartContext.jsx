@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer, useState} from 'react'
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useAuthContext } from '../hooks/Auth/useAuthContext';
 
 export const CartContext=createContext()
 
@@ -54,7 +54,7 @@ export const CartReducer=(state,action)=>{
             {
                 const {_id,qty,price}=action.payload;
                 const updatedCart =state.cart.filter(p=>p._id!==_id)
-                console.log(updatedCart,state.total_price - qty * price, state.total_qty - qty,)
+                //console.log(updatedCart,state.total_price - qty * price, state.total_qty - qty,)
                 return {
                     ...state,
                     cart: updatedCart,
@@ -92,7 +92,6 @@ export const CartContextProvider = ({ children }) => {
         const fetchCart = async () => {
             if (!user) return;
             const email = user.email;
-            console.log(user.token)
             try {
                 const response = await fetch('/api/cart/' + email, {
                     method: 'GET',

@@ -1,7 +1,7 @@
 import {useState,useEffect} from "react";
 import { Button,Label, TextInput } from "flowbite-react";
-import { useLogin } from "../hooks/useLogin";
-import {useAuthContext} from '../hooks/useAuthContext'
+import { useLogin } from "../hooks/Auth/useLogin";
+import {useAuthContext} from '../hooks/Auth/useAuthContext'
 import { useNavigate,useLocation } from "react-router-dom";
 
 const Login = () => {
@@ -25,7 +25,7 @@ const Login = () => {
     e.preventDefault();
     try {
      await login(email,password)
-     console.log(Error)
+     //console.log(Error)
     } catch (error) {
       console.error("Login failed:", error);
     }

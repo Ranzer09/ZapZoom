@@ -27,7 +27,7 @@ export const useLogin=()=>{
         {
             setLoading(false)
             setError(json.error)
-            console.log(json.error)
+            //console.log(json.error)
         }
 
         if(response.ok){
@@ -37,11 +37,11 @@ export const useLogin=()=>{
             await dispatch({type:'LOGIN',payload:json})
             setLoading(false)
             navigate('/Api/products')
-            console.log('good')
+            //console.log('good')
         }}
         catch(err)
         {
-            console.log(err)
+            //console.log(err)
         }
     }
     return{login,Loading,Error}

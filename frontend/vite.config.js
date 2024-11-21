@@ -8,7 +8,7 @@ export default defineConfig({
         port:3000,
         proxy:{
             '/api':{
-                target:'https://ecommerce-backend-1yau.onrender.com',
+                target:'http://localhost:5050',
                 changeOrigin:true,
                 rewrite:(path)=> path.replace(/^\/api/,'/api')
             }

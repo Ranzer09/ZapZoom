@@ -1,10 +1,10 @@
 import {useEffect,useState} from 'react'
-import ProductCard from '../components/productCard'
+import ProductCard from '../components/product/productCard'
 import {useProductContext} from '../hooks/useProduct'
-import {useAuthContext} from '../hooks/useAuthContext'
+import {useAuthContext} from '../hooks/Auth/useAuthContext'
 import { useNavigate } from 'react-router-dom'
 import { isTokenExpired } from '../App'
-import { useLogout } from '../hooks/useLogout'
+import { useLogout } from '../hooks/Auth/useLogout'
 import Sidebar from './sidebar'
 
 
@@ -41,14 +41,14 @@ const Home=()=>{
         
         if (isTokenExpired(user.token)) 
             {
-            console.log("Token is expired");
+            //console.log("Token is expired");
             navigate('/')
             logout()
         } 
         // Redirect if user is not logged in
         setProducts(products)
     }, [user,products]);
-    console.log('reloaded home')
+    //console.log('reloaded home')
 
     const handleFilterChange = (newFilters) => {
         setFilters((prev) => ({ ...prev, ...newFilters }));
@@ -58,7 +58,7 @@ const Home=()=>{
         setSort(newSort);
     };  
 
-    console.log(filteredProducts)
+    //console.log(filteredProducts)
     
   
     
@@ -70,9 +70,9 @@ const Home=()=>{
     return(
         <div className="home">
             
-            <div className="flex p-4 pt-4 gap-8 justify-between">  
+            <div className="flex p-4 pt-4 gap-8 justify-between w-full">  
             
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10">
                     {filteredProducts && filteredProducts.map((product)=>
                     (<ProductCard key={product._id} product={product} />))}
                 </div>

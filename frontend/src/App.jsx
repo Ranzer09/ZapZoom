@@ -5,9 +5,15 @@ import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import Login from './pages/login';
 import Register from './pages/register';
 import Home from './pages/home';
-import Cart from './components/cart';
+import Cart from './pages/cart';
 import {jwtDecode} from 'jwt-decode';
-import Add from './components/Add';
+import Add from './components/product/productForm';
+import Admin from './Admin/admin';
+import AdminSidebar from './Admin/adminSidebar';
+import UserManagement from './Admin/userManagement';
+import ProductManagement from './Admin/productManagement';
+import BusinessManagement from './Admin/businessManagement';
+import BusinessForm from './components/business/businessForm';
 
 export function isTokenExpired (token) {
     if (!token) return true;
@@ -28,24 +34,41 @@ function App() {
     <div>
       <BrowserRouter>
       <Header/>
-      <div className="pages">
+      {/* <div className="pages">
         <Routes>
         <Route path='/'
         element={<Welcome />}/>
-        <Route path='/Api/user/login'
-        element={<Login />}/>
+       
         <Route path='/Api/user/register'
         element={<Register />}/>
         <Route path='/Api/products' exact
         element={<Home />}/>
         <Route path='/Api/cart' exact
         element={<Cart />}/>
-        <Route path='/Api/products/add' exact
-        element={<Add />}/>
-        {/* if route isnt found */}
+        if route isnt found
         <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </div>
+      </div> */}
+      <div className="flex ">
+        <AdminSidebar/>
+        <div className="admin w-full grid justify-items-center">
+        <Routes>
+        <Route path='/'
+        element={<Admin />}/> 
+        <Route path='/admin/products/add/' exact
+        element={<Add />}/>
+        <Route path='/admin/users/' exact
+        element={<UserManagement/>}/>
+        <Route path='/admin/products/' exact
+        element={<ProductManagement/>}/>
+        <Route path='/admin/business/' exact
+        element={<BusinessManagement/>}/>
+        <Route path='/admin/business/register' exact
+        element={<BusinessForm/>}/>
+        <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        </div>
+        </div> 
       </BrowserRouter>
     </div>
   );
