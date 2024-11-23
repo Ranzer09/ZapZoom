@@ -29,12 +29,12 @@ const businessSchema=new Schema({
 
 
 //static register
-businessSchema.statics.register=async function (name,admin,date,products){
+businessSchema.statics.register=async function (name,admin,date){
     //validation
     if(name)
-        console.log(name,admin,date,products)
+        console.log(name,admin,date)
 
-    if(!(name&&admin&&date&&products))
+    if(!(name&&admin&&date))
     {
         throw Error("All fields must be filled")
     
@@ -46,10 +46,8 @@ businessSchema.statics.register=async function (name,admin,date,products){
     {
         throw Error("Business already exists")
     }
-    
-    //implement product checks as well
 
-    const business = await this.create({name,admin,date,products,status:false})
+    const business = await this.create({name,admin,date,products:[],status:false})
 
     return business
 }

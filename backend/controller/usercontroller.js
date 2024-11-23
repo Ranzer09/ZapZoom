@@ -48,5 +48,14 @@ const checkEmail= async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+const getAll =async (req,res) => {
+  try {
+      const user =  await User.find({},'username _id email').sort({createdAt:-1})//user with descending order
+      res.status(200).json({user})
+  } catch (error) {
+  res.status(400).json({error:error.message})        
+  }
+  }
  
-module.exports={loginUser,registerUser,checkEmail} 
+module.exports={loginUser,registerUser,checkEmail,getAll} 

@@ -28,9 +28,9 @@ function BusinessManagement() {
     return(
         <div className="BusinessManagement grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
             {
-                businesses?
+                businesses?.length>0?
                 <>
-                    { businesses && businesses.map((business)=>
+                    { businesses && businesses?.map((business)=>
         (<BusinessCard key={business._id} business={business} user={user} loading={loading} />))}
                 </>:
                 <p>Businesses not found :(</p>

@@ -42,7 +42,7 @@ const BusinessForm=()=>{
             return
         }
         
-    const business={name,products,admin,date}
+    const business={name,admin,date}
         //console.log(product)
         const response = await fetch('/api/business/register',{
             method:'POST',
@@ -58,7 +58,7 @@ const BusinessForm=()=>{
             setName('')
             setDate('')
             setAdmin('')
-            setProducts([])
+            // setProducts([])
             setError(null)
         }
     }
@@ -82,13 +82,13 @@ if (loading) {
             className='mb-2'
             />
             
-            <Label htmlFor=""className="text-md">
+            {/* <Label htmlFor=""className="text-md">
             Products:
-            </Label>
+            </Label> */}
 
             {/* show the produts */}
 
-            <TextInput type="text"
+            {/* <TextInput type="text"
             onChange={(e)=>setInput(e.target.value)}
             value={input}
             className='mb-2'
@@ -100,7 +100,7 @@ if (loading) {
                     <button className='ml-1 text-red-800' onClick={()=>{handleAdd('remove',name)}}>x</button>
                 </li>)}
             </div>}
-            <Button className='mt-4' onClick={()=>{handleAdd('add')}}>Add Product</Button>
+            <Button className='mt-4' onClick={()=>{handleAdd('add')}}>Add Product</Button> */}
 
             <Label htmlFor=""className="text-md">
                Joining year:

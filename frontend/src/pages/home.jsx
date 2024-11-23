@@ -2,11 +2,24 @@ import {useEffect,useState} from 'react'
 import ProductCard from '../components/product/productCard'
 import {useProductContext} from '../hooks/useProduct'
 import {useAuthContext} from '../hooks/Auth/useAuthContext'
+import {jwtDecode} from 'jwt-decode';
 import { useNavigate } from 'react-router-dom'
-import { isTokenExpired } from '../App'
 import { useLogout } from '../hooks/Auth/useLogout'
 import Sidebar from './sidebar'
 
+export function isTokenExpired (token) {
+    if (!token) return true;
+
+    try {
+        const decoded = jwtDecode(token);
+        const currentTime = Date.now() / 1000; // current time in seconds
+
+        return decoded.exp < currentTime;
+    } catch (error) {
+        console.error("Invalid token", error);
+        return true; // If there's an error, consider the token expired
+    }
+};
 
 
 const Home=()=>{

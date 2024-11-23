@@ -1,13 +1,43 @@
 import { useNavigate } from "react-router-dom"
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import { Button } from "flowbite-react"
 function BusinessCard({business,user,loading}) {
     const navigate=useNavigate()
-    let {name,date,products,status,admin,}=business
+    let {name,date,products,status,admin,_id}=business
+    const [deleted,setDeleted]=useState()
 
     const verfiy = async ()=>{
+           //api request to verify the business
+        try {
+            const response = await fetch('/api/business/'+_id,{
+                 method:'PATCH',
+             }) 
+              const json=await response.json()||null
+              if(response.ok)
+                console.log('Business Verified',json)
+              else
+                 throw new Error("Unable to verify");
+        } catch (error) {
+                console.log('error in verification',error)
+        } 
+        };
 
-    }
+    const handleDelete=async()=>
+            {  
+                try {
+                const response = await fetch('/api/business/'+_id,{
+                    method:'DELETE',
+                }) 
+                    const json=await response.json()||null
+                    if(response.ok)
+                    console.log('Business Deleted',json)
+                    else
+                        throw new Error("Unable to Delete");
+            } catch (error) {
+                    console.log('error in deletion',error)
+            }         
+            };
+
     if(!products)
         products=[]
     // useEffect(() => {

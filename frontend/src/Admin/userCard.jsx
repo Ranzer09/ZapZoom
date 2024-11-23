@@ -1,6 +1,14 @@
 import './styles/user.css'
-function User() {
+import {useEffect, useState} from 'react'
+import { fetchCart } from '../context/cartContext';
+import { useAuthContext } from '../hooks/Auth/useAuthContext';
 
+function UserCard({user:userData}) {
+    const [Loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [cart, setCart]=useState(null)
+    const {user}=useAuthContext()
+    const {email,username}=userData;
     const handleDelete=async()=>
         {
             setDeleted(null)
@@ -21,13 +29,22 @@ function User() {
             //  }
             //  else
             //     setDeleted(false)
-        }    
+        };
+
+    useEffect(() => {
+        try {
+            const User={email,token:user.token}
+            fetchCart(User,setError,setLoading,setCart)
+        } catch (error) {
+            console.log('error fetching cart in users',error)
+        }
+    }, [])
 
 
     return(
         <div className="user w-full">
-            <h3 className="name">Nathan</h3>
-            <p className="email">nathanial@gmail.com</p>
+            <h3 className="name">{username}</h3>
+            <p className="email">{email}</p>
             <button className="delete-button" onClick={() => 
             {if (window.confirm(`Are you sure you want to delete "" ?`)) {handleDelete();} }}>
                 Delete User
@@ -39,10 +56,10 @@ function User() {
                 </h1>
                 <p className="qty font-bold">Items</p>
                 <p className="price font-bold">Price</p>
-                <p className="qty">24</p>
-                <p className="price">$2400</p>
+                <p className="qty">{cart?.total_qty}</p>
+                <p className="price">${cart?.total_price}</p>
             </div>
         </div>
     )
 }
-export default User
+export default UserCard

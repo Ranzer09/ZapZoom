@@ -2,13 +2,16 @@ const express = require('express')
 const router = express.Router()
 
 //controllers
-const {loginUser,registerUser, checkEmail}= require('../controller/usercontroller')
+const {loginUser,registerUser, checkEmail,getAll}= require('../controller/usercontroller')
 
 //login route
 router.post('/login',loginUser)
 
 //register route
 router.post('/register',registerUser)
+
+//get all users info
+router.get('/',getAll)
 
 //checking if email exists
 router.post('/check-email', checkEmail);

@@ -1,6 +1,27 @@
 import {createContext, useEffect, useReducer, useState} from 'react'
 import { useAuthContext } from '../hooks/Auth/useAuthContext';
 
+export const fetchCart = async (user,setLoading,setError,setCart,dispatch) => {
+    if (!user) return;
+    const email = user.email;
+    try {
+        const response = await fetch('/api/cart/' + email, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${user.token}` },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json()
+        setCart(data)
+        dispatch({ type: 'SET_CART', payload: data });
+    } catch (error) {
+        setError(error.message);
+    } finally {
+        setLoading(false);
+    }
+};
+
 export const CartContext=createContext()
 
 export const CartReducer=(state,action)=>{
@@ -79,6 +100,7 @@ export const CartContextProvider = ({ children }) => {
     const { user } = useAuthContext();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [cart, setCart] = useState(null);
    
     const initial_state = {
         cart: [],
@@ -89,28 +111,7 @@ export const CartContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(CartReducer, initial_state);
     let total_qty=state.total_qty
     useEffect(() => {
-        const fetchCart = async () => {
-            if (!user) return;
-            const email = user.email;
-            try {
-                const response = await fetch('/api/cart/' + email, {
-                    method: 'GET',
-                    headers: { 'Authorization': `Bearer ${user.token}` },
-                });
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-               
-                dispatch({ type: 'SET_CART', payload: data });
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchCart();
+        fetchCart(user,setLoading,setError,setCart,dispatch);
     }, [user,total_qty]); // Fetch cart when user changes
     return(
         <CartContext.Provider value={{...state,dispatch,loading,error}} >
