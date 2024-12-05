@@ -40,6 +40,7 @@ const registerUser=async (req,res)=>{
 
 //check for email
 const checkEmail= async (req, res) => {
+  console.log(req);
   try {
     const { email } = req.body;
     const user = await User.checkemail({ email });
