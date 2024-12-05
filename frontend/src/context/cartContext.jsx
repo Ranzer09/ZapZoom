@@ -1,6 +1,7 @@
 import {createContext, useEffect, useReducer, useState} from 'react'
 import { useAuthContext } from '../hooks/useAuthContext';
 
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
 export const CartContext=createContext()
 
 export const CartReducer=(state,action)=>{
@@ -94,7 +95,7 @@ export const CartContextProvider = ({ children }) => {
             const email = user.email;
             console.log(user.token)
             try {
-                const response = await fetch('/api/cart/' + email, {
+                const response = await fetch(BASE_URL+'/api/cart/' + email, {
                     method: 'GET',
                     headers: { 'Authorization': `Bearer ${user.token}` },
                 });

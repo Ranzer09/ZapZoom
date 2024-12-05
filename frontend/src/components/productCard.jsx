@@ -4,8 +4,10 @@ import {useState} from 'react'
 import './styles/DetailsStyles.css'
 import { useCartContext } from "../hooks/useCartContext"
 
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 export async function addProductToCart  (email, product,user){
-  const response = await fetch('/api/cart', {
+  const response = await fetch(BASE_URL+'/api/cart', {
       method: 'POST', // or 'PUT' if updating
       headers: {
           'Content-Type': 'application/json',
@@ -92,7 +94,7 @@ const ProductCard = ({product})=>{
         console.log(setDeleted,'this is after setting deleted null')
         if(!user)
             return
-        const response = await fetch('/api/products/'+product._id,{
+        const response = await fetch(BASE_URL+'/api/products/'+product._id,{
             method:'DELETE',
             headers:{
                 'authorization':`Bearer ${user.token}`

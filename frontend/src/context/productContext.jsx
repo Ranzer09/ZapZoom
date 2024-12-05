@@ -3,6 +3,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useEffect } from 'react'
 export const ProductContext=createContext()
 
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
 export const ProductReducer=(state,action)=>{
     switch(action.type){
         case 'SET_PRODUCT':
@@ -33,7 +34,7 @@ export const ProductContextProvider =({children})=>{
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('/api/products', {
+                const response = await fetch(BASE_URL+'/api/products', {
                     method: 'GET',
                     headers: { 'Authorization': `Bearer ${user.token}` }
                 });

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button,Label, TextInput } from "flowbite-react";
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 
 function Welcome() {
@@ -36,7 +37,7 @@ function Welcome() {
 
  const checkEmail = async (email) => {
     try {
-      const response = await fetch('/api/user/check-email', {
+      const response = await fetch(BASE_URL+'/api/user/check-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

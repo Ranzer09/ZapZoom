@@ -5,6 +5,8 @@ import { addProductToCart } from "./productCard"
 import { useState} from 'react'
 import './styles/cart.css'
 
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 function CartItem({_id,name,qty:cart_qty,price,index}){
     const {dispatch:cartdispatch}=useCartContext()
     const {products}=useProductContext()
@@ -62,7 +64,7 @@ function CartItem({_id,name,qty:cart_qty,price,index}){
         const total_qty = products.find(obj => obj._id === _id).qty+cart_qty;
         let Product={_id,
           name,price,cart_qty};
-        fetch('/api/cart/' + user.email + '/product/' + _id, {
+        fetch(BASE_URL+'/api/cart/' + user.email + '/product/' + _id, {
             method: 'DELETE',
             headers: {
                 'authorization': `Bearer ${user.token}`

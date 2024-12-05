@@ -2,6 +2,8 @@ import {useState} from 'react'
 import { useProductContext } from '../hooks/useProduct'
 import {useAuthContext} from '../hooks/useAuthContext'
 import { Button, Label, TextInput } from 'flowbite-react'
+
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
 const ProductForm=()=>{
 
     const {user,loading}=useAuthContext()
@@ -24,7 +26,7 @@ const handleSubmit = async (e) => {
 
     const product={name,qty,price,description,category}
      console.log(product)
-    const response = await fetch('/api/products',{
+    const response = await fetch(BASE_URL+'/api/products',{
         method:'POST',
         body:JSON.stringify(product),
         headers:{'Content-Type':'application/json','authorization':`Bearer ${user.token}`}
