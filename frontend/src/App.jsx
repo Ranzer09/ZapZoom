@@ -1,18 +1,19 @@
-import {BrowserRouter} from 'react-router-dom'
-import Header from './components/header';
-import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import AdminRouter from './AdminRouter';
-import UserRouter from './UserRouter';
+import { BrowserRouter } from "react-router-dom";
+import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Router from "./Router";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-
-
+{
+  /* <UserRouter/> */
+}
 function App() {
   return (
     <div>
       <BrowserRouter>
-      <Header/>
-      {/* <UserRouter/> */}
-      <AdminRouter/> 
+        <Navbar />
+        <Router />
+        <Footer />
       </BrowserRouter>
     </div>
   );

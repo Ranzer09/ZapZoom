@@ -6,7 +6,7 @@ import './styles/productManagement.css'
 
 function ManageProduct() {
     const navigate = useNavigate()
-    // if(user.email!=business.email)
+    // if(user?.email!=business.email)
     // {
     //     navigate('/');
     //     return;

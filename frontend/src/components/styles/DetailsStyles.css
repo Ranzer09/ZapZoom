@@ -1,7 +1,7 @@
 .product-card {
   display: grid;
   justify-content: center;
-  width:12rem;
+  width:9rem;
     height: fit-content;
     background-color: white; 
     padding: 1rem; 

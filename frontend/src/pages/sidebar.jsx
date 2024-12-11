@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 
-const Sidebar = ({onFilterChange, onSortChange }) => {
+const Sidebar = ({ onFilterChange, onSortChange }) => {
   return (
     <div className=" w-32 lg:w-64 p-4 bg-gray-200 h-full rounded-lg">
-      <h2 className="text-sm lg:text-xl font-semibold mb-4 text-center">Filters</h2>
+      <h2 className="text-sm lg:text-xl font-semibold mb-4 text-center">
+        Filters
+      </h2>
       <div>
         <h3 className="text-sm lg:text-lg font-medium">Category</h3>
         <select
@@ -11,8 +13,9 @@ const Sidebar = ({onFilterChange, onSortChange }) => {
           className=" text-sm lg:text-lg w-full lg:w-full mt-2 p-2 border rounded"
         >
           <option value="">All</option>
-          <option value="animal">Animal</option>
+          <option value="fruit">Fruit</option>
           <option value="vehicle">Vehicle</option>
+          <option value="furniture">Furniture</option>
           {/* <option value="sport">Sport</option> */}
         </select>
       </div>
@@ -24,7 +27,7 @@ const Sidebar = ({onFilterChange, onSortChange }) => {
         >
           <option value="">All</option>
           <option value="low">0 - 500</option>
-          <option value="high">Above 500  </option>
+          <option value="high">Above 500 </option>
         </select>
       </div>
       <div className="mt-4">
