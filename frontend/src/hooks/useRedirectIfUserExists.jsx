@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const useRedirectIfUserExists = (user, redirectPath = "/Api/home") => {
+const useRedirectIfUserExists = (user, redirectPath = "/Api/") => {
   const navigate = useNavigate();
 
   useEffect(() => {

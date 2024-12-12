@@ -44,8 +44,8 @@ export default function Router() {
           )} */}
           <div className="admin w-full grid justify-items-center">
             <Routes>
-              <Route path="/Api" element={<Welcome />} />
-              <Route path="/Api/home" element={<Home />} />
+              {/* <Route path="/Api" element={<Welcome />} /> */}
+              <Route path="/Api/" element={<Home />} />
               <Route path="/Api/about" element={<About />} />
               <Route path="/Api/user/login" exact element={<Login />} />
               <Route path="/Api/user/register" exact element={<Register />} />

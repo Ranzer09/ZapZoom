@@ -82,7 +82,12 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
               Joined in: {date}
             </Typography>
             {!status ? (
-              <Button className="business-verfiy btn-success" onClick={verify}>
+              <Button
+                variant="contained"
+                sx={{ color: "white" }}
+                color="success"
+                onClick={verify}
+              >
                 Verify
               </Button>
             ) : (

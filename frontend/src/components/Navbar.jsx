@@ -14,9 +14,9 @@ import Minicart from "./cart/miniCart";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
 import { useLogout } from "../hooks/Auth/useLogout";
 
-const pages = ["Home", "Shop", "About"];
+const pages = ["", "Shop", "About"];
 const navOptions = [
-  { title: "Home", path: "Api/home" },
+  { title: "", path: "Api/" },
   { title: "Shop", path: "/Api/products" },
   { title: "About", path: "/Api/about" },
 ];
@@ -65,7 +65,7 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component={Link}
-            to={"/Api/home"}
+            to={"/Api/"}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -217,7 +217,7 @@ export default function Navbar() {
                 variant="h5"
                 noWrap
                 component={Link}
-                to={"/Api/home"}
+                to={"/Api/"}
                 sx={{
                   mr: 2,
                   display: { xs: "flex", md: "none" },
@@ -372,7 +372,7 @@ export default function Navbar() {
                 variant="h5"
                 noWrap
                 component={Link}
-                to={"/Api/home"}
+                to={"/Api/"}
                 sx={{
                   mr: 2,
                   display: { xs: "flex", md: "none" },

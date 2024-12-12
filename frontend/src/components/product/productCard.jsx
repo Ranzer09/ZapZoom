@@ -118,19 +118,19 @@ const ProductCard = ({ product }) => {
             <button
               className="qty-button "
               onClick={() => {
-                handleIncrement();
+                handleDecrement();
               }}
             >
-              +
+              -
             </button>
             <p className="qty inline m-2">{req_quanity}</p>
             <button
               className="qty-button "
               onClick={() => {
-                handleDecrement();
+                handleIncrement();
               }}
             >
-              -
+              +
             </button>
           </div>
           <button
