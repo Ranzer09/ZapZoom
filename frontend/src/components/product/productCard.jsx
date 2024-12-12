@@ -8,7 +8,7 @@ import Loading from "../../MUI Components/Loading";
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 export async function addProductToCart(email, product, user) {
   const response = await fetch(VITE_API_URL + "/api/cart", {
-    method: "POST", // or 'PUT' if updating
+    method: "POST", // or 'PATCH' if updating
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${user?.token}`,
@@ -60,7 +60,7 @@ const ProductCard = ({ product }) => {
         //console.log("Cart updated sucessfully",cart)
         // Second API call to update info
         return fetch(VITE_API_URL + `/api/products/${Product.id}`, {
-          method: "PUT",
+          method: "PATCH",
           body: JSON.stringify({ ...Product, qty: product.qty }),
           headers: {
             "Content-Type": "application/json",

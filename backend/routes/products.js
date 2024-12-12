@@ -22,7 +22,7 @@ router.get("/:id", readone);
 router.post("/", creation);
 
 //patch one product
-router.put("/:id", updation);
+router.patch("/:id", updation);
 
 //delete one product
 router.delete("/:id", deletion);

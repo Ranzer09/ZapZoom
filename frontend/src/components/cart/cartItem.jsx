@@ -32,7 +32,7 @@ function CartItem({ _id, index }) {
       .then((cart) => {
         // Second API call to update info
         return fetch(VITE_API_URL + `/api/products/${_id}`, {
-          method: "PUT",
+          method: "PATCH",
           body: JSON.stringify({
             ...Product,
             qty: product_qty - (req_quantity - qty),
@@ -87,7 +87,7 @@ function CartItem({ _id, index }) {
         .then((cart) => {
           // Second API call to update info in database
           return fetch(VITE_API_URL + `/api/products/${_id}`, {
-            method: "PUT",
+            method: "PATCH",
             body: JSON.stringify({ ...Product, qty: total_qty }),
             headers: {
               "Content-Type": "application/json",
@@ -132,19 +132,19 @@ function CartItem({ _id, index }) {
             <button
               className="qty-button"
               onClick={() => {
-                handleIncrement(1);
+                handleDecrement(1);
               }}
             >
-              +1
+              -1
             </button>
             <span className="inline my-2 bg-white px-1  ">{req_quantity}</span>
             <button
               className="qty-button"
               onClick={() => {
-                handleDecrement(1);
+                handleIncrement(1);
               }}
             >
-              -1
+              +1
             </button>
           </div>
           <span className="cart-hide">₹{price}</span>

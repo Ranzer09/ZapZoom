@@ -11,6 +11,7 @@ export const fetchCart = async (
   if (!user) return;
   const email = user?.email;
   try {
+    setLoading(true);
     const response = await fetch(VITE_API_URL + "/api/cart/" + email, {
       method: "GET",
       headers: { Authorization: `Bearer ${user?.token}` },
@@ -124,7 +125,7 @@ export const CartContextProvider = ({ children }) => {
   let total_qty = state.total_qty;
   useEffect(() => {
     fetchCart(user, setLoading, setError, setCart, dispatch);
-  }, [user, total_qty]); // Fetch cart when user changes
+  }, [total_qty]); // Fetch cart when user changes
   return (
     <CartContext.Provider value={{ ...state, dispatch, loading, error }}>
       {children}

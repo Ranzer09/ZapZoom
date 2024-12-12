@@ -16,7 +16,7 @@ import { useLogout } from "../hooks/Auth/useLogout";
 
 const pages = ["", "Shop", "About"];
 const navOptions = [
-  { title: "", path: "Api/" },
+  { title: "Home", path: "Api/" },
   { title: "Shop", path: "/Api/products" },
   { title: "About", path: "/Api/about" },
 ];
