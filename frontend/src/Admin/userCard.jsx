@@ -12,7 +12,7 @@ function UserCard({ user: userData }) {
   const { email, username, isAdmin, _id } = userData;
   const handleDelete = async () => {
     try {
-      const response = await fetch("/api/admin/user/" + _id, {
+      const response = await fetch(VITE_API_URL + "/api/admin/user/" + _id, {
         method: "DELETE",
         headers: { admin_id: user.id },
       });

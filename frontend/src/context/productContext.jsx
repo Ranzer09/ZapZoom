@@ -5,7 +5,7 @@ export const ProductContext = createContext();
 
 export async function fetchProducts(user, dispatch) {
   try {
-    const response = await fetch("/api/products", {
+    const response = await fetch(VITE_API_URL + "/api/products", {
       method: "GET",
       headers: { Authorization: `Bearer ${user?.token}` },
     });

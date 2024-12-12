@@ -37,7 +37,7 @@ const BusinessForm = () => {
 
     const business = { name, admin, date };
     //console.log(product)
-    const response = await fetch("/api/business/register", {
+    const response = await fetch(VITE_API_URL + "/api/business/register", {
       method: "POST",
       body: JSON.stringify(business),
       headers: {

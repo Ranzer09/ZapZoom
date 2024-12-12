@@ -11,7 +11,7 @@ export const fetchCart = async (
   if (!user) return;
   const email = user?.email;
   try {
-    const response = await fetch("/api/cart/" + email, {
+    const response = await fetch(VITE_API_URL + "/api/cart/" + email, {
       method: "GET",
       headers: { Authorization: `Bearer ${user?.token}` },
     });

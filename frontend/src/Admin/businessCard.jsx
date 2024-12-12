@@ -12,7 +12,7 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
   let { name, date, products, status, admin, _id } = business;
 
   const verify = () => {
-    fetch("/api/admin/business/" + _id, {
+    fetch(VITE_API_URL + "/api/admin/business/" + _id, {
       method: "PATCH",
     })
       .then((response) => {
@@ -25,7 +25,7 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
       .then((json) => {
         console.log("Business Verified", json);
         fetchdata();
-        return fetch("/api/user/register/" + admin, {
+        return fetch(VITE_API_URL + "/api/user/register/" + admin, {
           method: "PATCH",
         });
       })
@@ -46,7 +46,7 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch("/api/business/" + _id, {
+      const response = await fetch(VITE_API_URL + "/api/business/" + _id, {
         method: "DELETE",
       });
       const json = (await response.json()) || null;

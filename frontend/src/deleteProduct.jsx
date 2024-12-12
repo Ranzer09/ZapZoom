@@ -3,12 +3,15 @@ export const handleDelete = async (user, product, productdispatch) => {
   try {
     if (!user) return;
     //api request to delete the product
-    const response = await fetch("/api/products/" + product._id, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${user?.token}`,
-      },
-    });
+    const response = await fetch(
+      VITE_API_URL + "/api/products/" + product._id,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${user?.token}`,
+        },
+      }
+    );
     const json = (await response.json()) || null;
 
     if (response.ok) {

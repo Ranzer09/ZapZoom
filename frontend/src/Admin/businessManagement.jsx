@@ -6,7 +6,7 @@ import Loading from "../MUI Components/Loading";
 
 export const getBusiness = async (user) => {
   try {
-    const response = await fetch("/api/business", {
+    const response = await fetch(VITE_API_URL + "/api/business", {
       method: "GET",
       headers: { Authorization: `Bearer ${user?.token}` },
     });

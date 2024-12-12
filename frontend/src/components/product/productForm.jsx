@@ -33,7 +33,7 @@ const ProductForm = () => {
         business: user?.email,
       };
       //console.log(product)
-      const response = await fetch("/api/products", {
+      const response = await fetch(VITE_API_URL + "/api/products", {
         method: "POST",
         body: JSON.stringify(product),
         headers: {
@@ -58,7 +58,7 @@ const ProductForm = () => {
         setError(null);
         setEmptyFields(["empty"]);
         dispatch({ type: "CREATE_PRODUCT", payload: json });
-        const response = await fetch("/api/business", {
+        const response = await fetch(VITE_API_URL + "/api/business", {
           method: "POST",
           body: JSON.stringify(product),
           headers: {

@@ -7,7 +7,7 @@ import { fetchProducts } from "../../context/productContext";
 import Loading from "../../MUI Components/Loading";
 
 export async function addProductToCart(email, product, user) {
-  const response = await fetch("/api/cart", {
+  const response = await fetch(VITE_API_URL + "/api/cart", {
     method: "POST", // or 'PUT' if updating
     headers: {
       "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const ProductCard = ({ product }) => {
       .then((cart) => {
         //console.log("Cart updated sucessfully",cart)
         // Second API call to update info
-        return fetch(`/api/products/${Product.id}`, {
+        return fetch(VITE_API_URL + `/api/products/${Product.id}`, {
           method: "PUT",
           body: JSON.stringify({ ...Product, qty: product.qty }),
           headers: {

@@ -34,7 +34,7 @@ const BusinessProductCard = ({ product }) => {
       }
       if (newPrice < 1) return alert("Price cannot be less than 1");
       // update values in db
-      const response = await fetch(`/api/products/${_id}`, {
+      const response = await fetch(VITE_API_URL + `/api/products/${_id}`, {
         method: "PUT",
         body: JSON.stringify({
           ...product,

@@ -8,7 +8,7 @@ function UserManagement() {
   const [loading, setLoading] = useState(true);
   const getUsers = async () => {
     try {
-      const response = await fetch("/api/user", {
+      const response = await fetch(VITE_API_URL + "/api/user", {
         method: "GET",
         headers: { Authorization: `Bearer ${user?.token}` },
       });

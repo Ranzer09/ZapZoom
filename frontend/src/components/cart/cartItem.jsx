@@ -31,7 +31,7 @@ function CartItem({ _id, index }) {
     addProductToCart(user?.email, Product, user) //add product to cart in database using function in ProductCard
       .then((cart) => {
         // Second API call to update info
-        return fetch(`/api/products/${_id}`, {
+        return fetch(VITE_API_URL + `/api/products/${_id}`, {
           method: "PUT",
           body: JSON.stringify({
             ...Product,
@@ -72,7 +72,7 @@ function CartItem({ _id, index }) {
         req_quantity,
       };
       //API REQUEST TO DELETE THE PRODUCT FROM CART IN DATABASE
-      fetch("/api/cart/" + user?.email + "/product/" + _id, {
+      fetch(VITE_API_URL + "/api/cart/" + user?.email + "/product/" + _id, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${user?.token}`,
@@ -86,7 +86,7 @@ function CartItem({ _id, index }) {
         })
         .then((cart) => {
           // Second API call to update info in database
-          return fetch(`/api/products/${_id}`, {
+          return fetch(VITE_API_URL + `/api/products/${_id}`, {
             method: "PUT",
             body: JSON.stringify({ ...Product, qty: total_qty }),
             headers: {

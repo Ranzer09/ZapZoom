@@ -33,7 +33,7 @@ function Welcome() {
   const checkEmail = async (email) => {
     try {
       //api reqeust
-      const response = await fetch("/api/user/check-email", {
+      const response = await fetch(VITE_API_URL + "/api/user/check-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
