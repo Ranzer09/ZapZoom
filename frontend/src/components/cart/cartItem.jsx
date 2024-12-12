@@ -6,7 +6,7 @@ import { fetchProducts } from "../../context/productContext";
 import { useState } from "react";
 import "../../pages/Styles/cart.css";
 import Loading from "../../MUI Components/Loading";
-
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 function CartItem({ _id, index }) {
   const { cart, dispatch: cartdispatch } = useCartContext();
   const { name, qty, price } = cart[index];

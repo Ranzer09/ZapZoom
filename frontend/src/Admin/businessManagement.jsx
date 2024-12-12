@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
 import Loading from "../MUI Components/Loading";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 export const getBusiness = async (user) => {
   try {

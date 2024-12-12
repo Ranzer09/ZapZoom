@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
 import Loading from "../MUI Components/Loading";
 import useRedirectIfUserExists from "../hooks/useRedirectIfUserExists";
-
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 function Welcome() {
   const { user, loading } = useAuthContext();
   const navigate = useNavigate();

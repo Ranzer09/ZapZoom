@@ -6,6 +6,7 @@ import Loading from "../MUI Components/Loading";
 import { Button, TextField } from "@mui/material";
 import { fetchProducts } from "../context/productContext";
 import { handleDelete } from "../deleteProduct";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 const BusinessProductCard = ({ product }) => {
   const { name, price, category, qty, _id } = product;
   const { dispatch: productdispatch } = useProductContext();

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useNavigate } from "react-router-dom";
-
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 export const useLogin = () => {
   const navigate = useNavigate();
   const [Error, setError] = useState(null);
@@ -15,6 +15,7 @@ export const useLogin = () => {
 
     //send post request to create user
     try {
+      console.log(VITE_API_URL);
       const response = await fetch(VITE_API_URL + "/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

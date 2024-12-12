@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchCart } from "../context/cartContext";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
 import { Button } from "@mui/material";
-
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 function UserCard({ user: userData }) {
   const [Loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

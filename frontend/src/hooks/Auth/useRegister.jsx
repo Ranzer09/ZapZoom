@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useNavigate } from "react-router-dom";
-
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 export const useRegister = () => {
   const navigate = useNavigate();
   const [Error, setError] = useState(null);

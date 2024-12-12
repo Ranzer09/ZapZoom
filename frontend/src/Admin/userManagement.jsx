@@ -2,6 +2,7 @@ import { useAuthContext } from "../hooks/Auth/useAuthContext";
 import Loading from "../MUI Components/Loading";
 import UserCard from "./userCard";
 import { useState, useEffect } from "react";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 function UserManagement() {
   const { user, loading: userLoading } = useAuthContext();
   const [users, setUsers] = useState([]);

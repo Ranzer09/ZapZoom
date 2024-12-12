@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
 import { useEffect } from "react";
 export const ProductContext = createContext();
-
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 export async function fetchProducts(user, dispatch) {
   try {
     const response = await fetch(VITE_API_URL + "/api/products", {

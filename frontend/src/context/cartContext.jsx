@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
-
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 export const fetchCart = async (
   user,
   setLoading,

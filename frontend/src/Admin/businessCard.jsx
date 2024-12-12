@@ -6,6 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Box, Button, List } from "@mui/material";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
   const navigate = useNavigate();

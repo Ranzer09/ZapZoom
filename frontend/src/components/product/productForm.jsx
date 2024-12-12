@@ -3,6 +3,7 @@ import { useProductContext } from "../../hooks/useProduct";
 import { useAuthContext } from "../../hooks/Auth/useAuthContext";
 import { Button, Label, TextInput } from "flowbite-react";
 import Loading from "../../MUI Components/Loading";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 const ProductForm = () => {
   const { user, loading } = useAuthContext();
   const { dispatch } = useProductContext();

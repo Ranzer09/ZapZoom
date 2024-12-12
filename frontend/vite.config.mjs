@@ -14,13 +14,13 @@ export default defineConfig({
   server: {
     open: true,
     port: 3000,
-    proxy: {
-      "/api": {
-        target: process.env.VITE_API_URL, // Access the API URL from environment variables
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, "/api"),
-      },
-    },
+    // proxy: {
+    //   "/api": {
+    //     target: process.env.VITE_API_URL, // Access the API URL from environment variables
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, "/api"),
+    //   },
+    // },
   },
 });
 
