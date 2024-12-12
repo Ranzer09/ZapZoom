@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuthContext } from "../../hooks/Auth/useAuthContext";
 import { Button, Label, TextInput } from "flowbite-react";
 import Loading from "../../MUI Components/Loading";
+import { Box, Typography } from "@mui/material";
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 const BusinessForm = () => {
   //user is the admin for the business, they can manage the products of the business
@@ -63,6 +64,17 @@ const BusinessForm = () => {
     <>
       {loading ? (
         <Loading />
+      ) : user.isBusiness ? (
+        <Box
+          sx={{
+            height: "100vh",
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography>You are already Registered as a Business!</Typography>
+        </Box>
       ) : (
         <div className="inline">
           <form

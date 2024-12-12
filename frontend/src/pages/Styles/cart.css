@@ -1,8 +1,9 @@
 .cart{
-    width: 80%;
+    width: 90%;
     margin-top: 1rem;
     display: grid;
-    grid-template-rows: repeat(3,auto);
+    grid-template-rows: repeat(3,80px);
+    height: 100vh;
 }
 
 .cart-heading{
@@ -55,11 +56,13 @@
 
 .cart-empty{
     text-align: center;
-    margin-top: 2em;
-    font-size: 40px;
+    margin: auto;
+    font-size: 60px;
     font-family: sans-serif;
     color: white;
     -webkit-text-stroke: 1px rgb(255, 0, 0);
+    align-self: center;
+    justify-self: center;
 }
 
 .total{

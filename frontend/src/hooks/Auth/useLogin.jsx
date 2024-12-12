@@ -36,7 +36,7 @@ export const useLogin = () => {
         //update auth context
         await dispatch({ type: "LOGIN", payload: json });
         setLoading(false);
-        navigate("/Api/products");
+        navigate("/Api/");
       }
     } catch (err) {
       console.log(err);

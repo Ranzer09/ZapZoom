@@ -38,7 +38,7 @@ export const useRegister = () => {
         setLoading(false);
         //create a cart for the user
 
-        navigate("/Api/products");
+        navigate("/Api/");
       }
     } catch (err) {
       console.log(err);

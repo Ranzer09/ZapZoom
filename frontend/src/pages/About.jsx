@@ -68,11 +68,12 @@ export default function About() {
             </Typography>
             <Typography
               sx={{
-                color: "black",
+                color: "#313131",
                 marginTop: "20px",
-                fontSize: { xs: "12px", sm: "16px", md: "18px" },
+                fontSize: { xs: "12px", sm: "14px", md: "16px" },
                 width: { sm: "80%", md: "60%" },
                 margin: "auto",
+                fontFamily: "'Lato',sans-serif",
               }}
             >
               We are passionate about bringing you the best in quality products
@@ -99,9 +100,10 @@ export default function About() {
               />
               <Typography
                 sx={{
-                  color: "black",
+                  color: "#313131",
                   marginTop: "20px",
-                  fontSize: { xs: "12px", sm: "16px", md: "18px" },
+                  fontSize: { xs: "12px", sm: "14px", md: "16px" },
+                  fontFamily: "'Lato',sans-serif",
                 }}
               >
                 At ZapZoom, we believe that shopping should be convenient,
@@ -130,9 +132,10 @@ export default function About() {
               />
               <Typography
                 sx={{
-                  color: "black",
+                  color: "#313131",
                   marginTop: "20px",
-                  fontSize: { xs: "12px", sm: "16px", md: "18px" },
+                  fontSize: { xs: "12px", sm: "14px", md: "16px" },
+                  fontFamily: "'Lato',sans-serif",
                 }}
               >
                 Our mission is to provide our customers with a seamless shopping

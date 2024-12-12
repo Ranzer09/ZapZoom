@@ -57,7 +57,7 @@ const Shop = () => {
   useEffect(() => {
     // Log the user object for debugging
     if (!user || user === null) {
-      navigate("/");
+      navigate("/Api/user/register");
       return;
     }
 

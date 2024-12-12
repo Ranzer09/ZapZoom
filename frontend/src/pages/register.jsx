@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Button, Label, TextInput } from "flowbite-react";
 import { useRegister } from "../hooks/Auth/useRegister";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import Loading from "../MUI Components/Loading";
 import useRedirectIfUserExists from "../hooks/useRedirectIfUserExists";
+import { Typography } from "@mui/material";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -86,13 +87,21 @@ const Register = () => {
           <Button type="submit" disabled={Loading}>
             Register new account
           </Button>
+          <Typography
+            textAlign={"center"}
+            component={Link}
+            to={"/Api/user/login"}
+          >
+            Click here to Login!
+          </Typography>
         </form>
+        <hr />
+        {Error && (
+          <div style={{ textAlign: "center" }} className="mb-2 block w-fit">
+            <Label color="failure" value={Error} />
+          </div>
+        )}
       </section>
-      {Error && (
-        <div className="mb-2 block w-fit">
-          <Label color="failure" value={Error} />
-        </div>
-      )}
     </div>
   );
 };

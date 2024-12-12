@@ -22,7 +22,9 @@ function Cart() {
       {loading || userloading ? (
         <Loading />
       ) : cart.length === 0 ? (
-        <div className="cart-empty">Cart is empty</div>
+        <div className="cart-empty" style={{ height: "100vh" }}>
+          Cart is empty
+        </div>
       ) : (
         <div className="cart">
           <div className="cart-heading">

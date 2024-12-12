@@ -1,8 +1,9 @@
 .product-card {
   display: grid;
   justify-content: center;
+  align-items: center;
   width:9rem;
-    height: fit-content;
+    height: 23rem;
     background-color: white; 
     padding: 1rem; 
     border: 1px solid #ccc; 
@@ -10,14 +11,15 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
   
-  .product-card img{
-    width: fit-content;
-    height: 100px;
+
+  .add-button{
+    background-color: #f7ca00;
+    border-radius: 10px;
+    font-size: 12px;
   }
 .product-name {
     font-size: 0.975rem; 
     font-weight: 600; 
-    cursor: pointer;
   }
 
 @media (min-width: 900px) { 
@@ -68,6 +70,9 @@
     font-size: 15px;
     margin-top: 5px;
 }
+.add-button{
+ font-size: 14px;
+}
 }
 
 
@@ -81,9 +86,4 @@
   background-color: #ff0000; 
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-}
-
-.add-button{
-  background-color: #f7ca00;
-  border-radius: 10px;
 }

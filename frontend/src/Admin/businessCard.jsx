@@ -101,9 +101,11 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
             ) : (
               <Box
                 sx={{
-                  height: "20%",
+                  height: "50%",
                   overflow: "auto",
                   border: "solid 1px grey",
+                  borderRadius: "10px",
+                  padding: "5px",
                 }}
               >
                 <List>

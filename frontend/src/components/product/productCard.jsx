@@ -107,7 +107,13 @@ const ProductCard = ({ product }) => {
             loading="lazy"
             src={image}
             alt={product.name}
-            className="w-full h-40 object-cover mb-2"
+            className="object-cover mb-2"
+            style={{
+              height: "100%",
+              width: "80%",
+              justifySelf: "center",
+              marginBottom: "20px",
+            }}
           />
           <h3 className="product-name">{product.name}</h3>
           <p className="product-price">category: {product.category}</p>

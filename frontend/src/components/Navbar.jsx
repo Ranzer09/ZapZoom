@@ -86,10 +86,15 @@ export default function Navbar() {
           </Typography>
           {!user ? (
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Button className="flex-none text-white" href="/Api/user/login">
+              <Button
+                sx={{ fontSize: "18px" }}
+                className="flex-none text-white"
+                href="/Api/user/login"
+              >
                 Login
               </Button>
               <Button
+                sx={{ fontSize: "18px" }}
                 className="flex-none text-white"
                 href="/Api/user/register"
               >
@@ -110,8 +115,8 @@ export default function Navbar() {
                       color: "white",
                       display: "block",
                       fontSize: "25px",
-                      fontFamily: "monospace",
-                      fontWeight: 700,
+                      fontFamily: "'Karla', sans-serif",
+                      fontWeight: 400,
                       transition: "color 0.3s ease",
                       "&:hover": {
                         color: "black",
@@ -130,8 +135,8 @@ export default function Navbar() {
                       color: "white",
                       display: "block",
                       fontSize: "25px",
-                      fontFamily: "monospace",
-                      fontWeight: 700,
+                      fontFamily: "'Karla', sans-serif",
+                      fontWeight: 400,
                       transition: "color 0.3s ease",
                       "&:hover": {
                         color: "black",
@@ -153,8 +158,8 @@ export default function Navbar() {
                         color: "white",
                         display: "block",
                         fontSize: "25px",
-                        fontFamily: "monospace",
-                        fontWeight: 700,
+                        fontFamily: "'Karla', sans-serif",
+                        fontWeight: 400,
                         transition: "color 0.3s ease",
                         "&:hover": {
                           color: "black",
@@ -174,8 +179,8 @@ export default function Navbar() {
                         color: "white",
                         display: "block",
                         fontSize: "25px",
-                        fontFamily: "monospace",
-                        fontWeight: 700,
+                        fontFamily: "'Karla', sans-serif",
+                        fontWeight: 400,
                         transition: "color 0.3s ease",
                         "&:hover": {
                           color: "black",
@@ -189,7 +194,11 @@ export default function Navbar() {
                   ))}
               </Box>
 
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                }}
+              >
                 <a
                   className="no-underline text-white"
                   href={"/Api/cart"}
@@ -238,15 +247,15 @@ export default function Navbar() {
                 ZapZoom
               </Typography>
               <Button
+                sx={{ fontSize: "18px" }}
                 className="flex-none text-white"
-                style={{ fontSize: "13px" }}
                 href="/Api/user/login"
               >
                 Login
               </Button>
               <Button
+                sx={{ fontSize: "18px" }}
                 className="flex-none text-white"
-                style={{ fontSize: "13px" }}
                 href="/Api/user/register"
               >
                 Sign up
