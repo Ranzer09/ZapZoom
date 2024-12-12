@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "flowbite-react";
+import { Card } from "flowbite-react";
 import Loading from "../MUI Components/Loading";
 import { memo, useEffect } from "react";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { Box, Button, List } from "@mui/material";
+
 const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
   const navigate = useNavigate();
   let { name, date, products, status, admin, _id } = business;
@@ -61,42 +66,68 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="BusinessCard">
-          <h3 className="business-name">{name}</h3>
-          <h6 className="business-name">{admin}</h6>
-          <h6 className="business-joined">Joined in: {date}</h6>
-          {!status ? (
-            <Button className="business-verfiy btn-success" onClick={verify}>
-              Verify
+        <Card sx={{ minWidth: 275 }}>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {name}
+            </Typography>
+            <Typography
+              gutterBottom
+              sx={{ color: "text.secondary", fontSize: 14 }}
+            >
+              {admin}
+            </Typography>
+            <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+              Joined in: {date}
+            </Typography>
+            {!status ? (
+              <Button className="business-verfiy btn-success" onClick={verify}>
+                Verify
+              </Button>
+            ) : (
+              <Typography variant="h6" sx={{ color: "green" }}>
+                Verified!
+              </Typography>
+            )}
+            <Typography>Products:</Typography>
+            {!(products.length > 0) ? (
+              <Typography>No products to show yet!</Typography>
+            ) : (
+              <Box
+                sx={{
+                  height: "20%",
+                  overflow: "auto",
+                  border: "solid 1px grey",
+                }}
+              >
+                <List>
+                  {products.map((name, index) => (
+                    <li key={index} style={{ marginBottom: "5px" }}>
+                      {" "}
+                      {name}
+                    </li>
+                  ))}
+                </List>
+              </Box>
+            )}
+          </CardContent>
+          <CardActions>
+            <Button
+              variant="contained"
+              color="error"
+              sx={{}}
+              onClick={() => {
+                if (
+                  window.confirm(`Are you sure you want to delete "${name}" ?`)
+                ) {
+                  handleDelete();
+                }
+              }}
+            >
+              Delete Business
             </Button>
-          ) : (
-            <p className="text-green-400">Verified!</p>
-          )}
-          <p>Products:</p>
-          {!(products.length > 0) ? (
-            <p>No products to show yet!</p>
-          ) : (
-            <div className="products-to-be-added overflow-auto h-12">
-              <ul>
-                {products.map((name, index) => (
-                  <li key={index}>{name}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          <button
-            className="delete-button"
-            onClick={() => {
-              if (
-                window.confirm(`Are you sure you want to delete "${name}" ?`)
-              ) {
-                handleDelete();
-              }
-            }}
-          >
-            Delete Business
-          </button>
-        </div>
+          </CardActions>
+        </Card>
       )}
     </>
   );

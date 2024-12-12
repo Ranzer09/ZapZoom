@@ -46,7 +46,7 @@ function BusinessManagement() {
       ) : (
         <>
           {businesses?.length > 0 ? (
-            <div className="BusinessManagement grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+            <div className="BusinessManagement w-full grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
               {businesses &&
                 businesses?.map((business) => (
                   <BusinessCard

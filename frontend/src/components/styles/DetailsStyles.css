@@ -20,9 +20,12 @@
     cursor: pointer;
   }
 
-@media (min-width: 1024px) { 
+@media (min-width: 900px) { 
       .product-name {
           font-size: 1.25rem; 
+      }
+      .product-card{
+        width:12rem;
       }
     }
   

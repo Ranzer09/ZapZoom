@@ -65,7 +65,7 @@ export default function Navbar() {
             variant="h6"
             noWrap
             component={Link}
-            to={"/"}
+            to={"/Api/home"}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -121,6 +121,72 @@ export default function Navbar() {
                     {title}
                   </Button>
                 ))}
+                {user.isAdmin && (
+                  <Button
+                    key={"admin"}
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: "white",
+                      display: "block",
+                      fontSize: "25px",
+                      fontFamily: "monospace",
+                      fontWeight: 700,
+                      transition: "color 0.3s ease",
+                      "&:hover": {
+                        color: "black",
+                      },
+                    }}
+                    component={Link}
+                    to={"/Api/admin"}
+                  >
+                    Admin Dashboard
+                  </Button>
+                )}
+                {!user.isAdmin &&
+                  (user.isBusiness ? (
+                    <Button
+                      key={"business"}
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        color: "white",
+                        display: "block",
+                        fontSize: "25px",
+                        fontFamily: "monospace",
+                        fontWeight: 700,
+                        transition: "color 0.3s ease",
+                        "&:hover": {
+                          color: "black",
+                        },
+                      }}
+                      component={Link}
+                      to={"/Api/business"}
+                    >
+                      Business Dashboard
+                    </Button>
+                  ) : (
+                    <Button
+                      key={"register"}
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        color: "white",
+                        display: "block",
+                        fontSize: "25px",
+                        fontFamily: "monospace",
+                        fontWeight: 700,
+                        transition: "color 0.3s ease",
+                        "&:hover": {
+                          color: "black",
+                        },
+                      }}
+                      component={Link}
+                      to={"/Api/admin/business/register"}
+                    >
+                      Register As Business
+                    </Button>
+                  ))}
               </Box>
 
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -151,7 +217,7 @@ export default function Navbar() {
                 variant="h5"
                 noWrap
                 component={Link}
-                to={"/"}
+                to={"/Api/home"}
                 sx={{
                   mr: 2,
                   display: { xs: "flex", md: "none" },
@@ -306,7 +372,7 @@ export default function Navbar() {
                 variant="h5"
                 noWrap
                 component={Link}
-                to={"/"}
+                to={"/Api/home"}
                 sx={{
                   mr: 2,
                   display: { xs: "flex", md: "none" },

@@ -22,7 +22,7 @@ function UserManagement() {
   useEffect(() => {
     getUsers();
     if (users) setLoading(false);
-  }, [user]);
+  }, [getUsers]);
 
   return (
     <>

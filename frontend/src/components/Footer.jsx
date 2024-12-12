@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Footer() {
   const navigate = useNavigate();
+
   return (
     <Box>
       <footer
@@ -40,7 +41,8 @@ export default function Footer() {
                 <Typography>
                   <Typography
                     sx={{ cursor: "pointer" }}
-                    onClick={() => navigate("/Api/products")}
+                    component={Link}
+                    to={"/Api/products"}
                     className="pe-auto text-decoration-underline text-reset"
                   >
                     VEHICLES
@@ -49,7 +51,8 @@ export default function Footer() {
                 <Typography>
                   <Typography
                     sx={{ cursor: "pointer" }}
-                    onClick={() => navigate("/Api/products")}
+                    component={Link}
+                    to={"/Api/products"}
                     className="pe-auto text-decoration-underline text-reset"
                   >
                     FRUITS
@@ -58,7 +61,8 @@ export default function Footer() {
                 <Typography>
                   <Typography
                     sx={{ cursor: "pointer" }}
-                    onClick={() => navigate("/Api/products")}
+                    component={Link}
+                    to={"/Api/products"}
                     className="pe-auto text-decoration-underline text-reset"
                   >
                     FURNITURE

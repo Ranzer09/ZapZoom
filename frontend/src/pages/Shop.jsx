@@ -50,6 +50,9 @@ const Shop = () => {
     if (sort === "price-desc") return b.price - a.price;
     return 0;
   });
+  useEffect(() => {
+    scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     // Log the user object for debugging
@@ -60,15 +63,11 @@ const Shop = () => {
 
     if (isTokenExpired(user?.token)) {
       //console.log("Token is expired");
-      navigate("/");
       logout();
     }
     // Redirect if user is not logged in
     setProducts(products);
   }, [user, products]);
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   const handleFilterChange = (newFilters) => {
     setFilters((prev) => ({ ...prev, ...newFilters }));
@@ -80,7 +79,15 @@ const Shop = () => {
 
   if (Error)
     return (
-      <p>
+      <p
+        style={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         Failed to fetch data. Server may be Down. Please Wait and try again
         later!
       </p>
@@ -106,7 +113,17 @@ const Shop = () => {
               ))}
           </div>
         ) : (
-          <div style={{ textAlign: "center" }}>Nothing to see here!</div>
+          <div
+            style={{
+              height: "100vh",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <p>Nothing to see here!</p>
+          </div>
         )}
         <Sidebar
           filters={filters}
