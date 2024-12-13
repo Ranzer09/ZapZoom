@@ -57,7 +57,7 @@ const Shop = () => {
   useEffect(() => {
     // Log the user object for debugging
     if (!user || user === null) {
-      navigate("/Api/user/register");
+      navigate("/Api/user/login");
       return;
     }
 
@@ -98,13 +98,13 @@ const Shop = () => {
     <div className="w-full h-full">
       {" "}
       <div className="flex p-4 pt-4 gap-8 justify-between w-full">
-        {user?.isAdmin ? (
+        {/* {user?.isAdmin ? (
           <AdminSidebar />
         ) : user?.isBusiness ? (
           <BusinessSidebar />
         ) : (
           <></>
-        )}
+        )} */}
         {products.length > 0 ? (
           <div className="grid sm:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-5 gap-10">
             {filteredProducts &&
@@ -115,11 +115,12 @@ const Shop = () => {
         ) : (
           <div
             style={{
-              height: "100vh",
+              height: "20vh",
               display: "flex",
-              flexDirection: "column",
               justifyContent: "center",
-              alignItems: "center",
+              alignItems: "start",
+              textAlign: "center",
+              width: "100%",
             }}
           >
             <p>Nothing to see here!</p>

@@ -1,6 +1,7 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
 const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 export const fetchCart = async (
   user,
   setLoading,
@@ -17,13 +18,13 @@ export const fetchCart = async (
       headers: { Authorization: `Bearer ${user?.token}` },
     });
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("Network response was not ok", response);
     }
     const data = await response.json();
     await setCart(data);
     await dispatch({ type: "SET_CART", payload: data });
   } catch (error) {
-    console.error("Cart not found");
+    console.error("Cart not found", error.message);
     setError(error.message);
   } finally {
     setLoading(false);
@@ -125,7 +126,7 @@ export const CartContextProvider = ({ children }) => {
   let total_qty = state.total_qty;
   useEffect(() => {
     fetchCart(user, setLoading, setError, setCart, dispatch);
-  }, [total_qty]); // Fetch cart when user changes
+  }, [total_qty, user]); // Fetch cart when user changes
   return (
     <CartContext.Provider value={{ ...state, dispatch, loading, error }}>
       {children}

@@ -27,7 +27,7 @@ const readone = async (req, res) => {
 
 //create new product
 const creation = async (req, res) => {
-  const { name, qty, description, price, category, business } = req.body; //destructure
+  const { name, qty, brand, price, category, business } = req.body; //destructure
   let EmptyFields = [];
   if (!name) {
     EmptyFields.push("name");
@@ -35,8 +35,8 @@ const creation = async (req, res) => {
   if (!qty) {
     EmptyFields.push("qty");
   }
-  if (!description) {
-    EmptyFields.push("description");
+  if (!brand) {
+    EmptyFields.push("brand");
   }
   if (category === "") {
     EmptyFields.push("category");
@@ -54,7 +54,7 @@ const creation = async (req, res) => {
     const product = await Product.create({
       name,
       qty,
-      description,
+      brand,
       price,
       category,
       business,

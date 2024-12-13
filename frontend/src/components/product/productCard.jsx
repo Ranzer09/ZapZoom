@@ -6,6 +6,7 @@ import { useCartContext } from "../../hooks/useCartContext";
 import { fetchProducts } from "../../context/productContext";
 import Loading from "../../MUI Components/Loading";
 const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 export async function addProductToCart(email, product, user) {
   const response = await fetch(VITE_API_URL + "/api/cart", {
     method: "POST", // or 'PATCH' if updating

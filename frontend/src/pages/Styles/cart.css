@@ -1,4 +1,15 @@
-.cart{
+
+
+.cart-heading{
+    font-size: 1rem;
+}
+
+
+
+
+
+
+/* .cart{
     width: 90%;
     margin-top: 1rem;
     display: grid;
@@ -8,7 +19,7 @@
 
 .cart-heading{
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: 30px repeat(4,1fr);
     justify-content: center;
     place-items: center;
 }
@@ -122,4 +133,4 @@
     .qty-div{
         gap: 10px;
     }
-}
+} */

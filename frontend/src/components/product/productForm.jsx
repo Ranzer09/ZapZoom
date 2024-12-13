@@ -10,7 +10,7 @@ const ProductForm = () => {
   const [name, setName] = useState("");
   const [qty, setQty] = useState("");
   const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [Error, setError] = useState(null);
   const [EmptyFields, setEmptyFields] = useState(["empty"]);
@@ -29,7 +29,7 @@ const ProductForm = () => {
         name,
         qty,
         price,
-        description,
+        brand,
         category,
         business: user?.email,
       };
@@ -51,7 +51,7 @@ const ProductForm = () => {
       }
       //console.log(Error,EmptyFields)
       if (response.ok) {
-        setDescription("");
+        setBrand("");
         setName("");
         setQty("");
         setPrice("");
@@ -128,6 +128,23 @@ const ProductForm = () => {
         </select>
 
         <Label htmlFor="" className="text-md">
+          Brand
+        </Label>
+        <TextInput
+          type="text"
+          onChange={(e) => setBrand(e.target.value)}
+          value={brand}
+          className="mb-2"
+          color={
+            EmptyFields.includes("brand")
+              ? "failure"
+              : EmptyFields.includes("empty")
+              ? ""
+              : "success"
+          }
+        />
+
+        <Label htmlFor="" className="text-md">
           Quantity in Numbers
         </Label>
         <TextInput
@@ -154,23 +171,6 @@ const ProductForm = () => {
           className="mb-2"
           color={
             EmptyFields.includes("price")
-              ? "failure"
-              : EmptyFields.includes("empty")
-              ? ""
-              : "success"
-          }
-        />
-
-        <Label htmlFor="" className="text-md">
-          description
-        </Label>
-        <TextInput
-          type="text"
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-          className="mb-2"
-          color={
-            EmptyFields.includes("description")
               ? "failure"
               : EmptyFields.includes("empty")
               ? ""
