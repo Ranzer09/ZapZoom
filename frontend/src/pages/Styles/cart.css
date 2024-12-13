@@ -8,7 +8,7 @@
 
 .cart-heading{
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(4,1fr);
     justify-content: center;
     place-items: center;
 }
@@ -25,7 +25,7 @@
 @media (min-width: 708px) { 
     .cart-heading
     {
-    grid-template-columns: repeat(6,1fr) 50px;
+    grid-template-columns: 20px repeat(5,1fr) 50px;
     }
     .cart-hide{
         display: flex;

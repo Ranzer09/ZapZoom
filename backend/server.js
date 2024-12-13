@@ -11,16 +11,12 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://zapzoom.onrender.com",
-  "https://zapzoom-dev-front.onrender.com",
-];
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: "*",
     methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
