@@ -97,7 +97,7 @@ const Shop = () => {
   ) : (
     <div className="w-full h-full">
       {" "}
-      <div className="flex p-4 pt-4 gap-8 justify-between w-full">
+      <div className="flex p-4 pt-4 gap-2 justify-between w-full">
         {/* {user?.isAdmin ? (
           <AdminSidebar />
         ) : user?.isBusiness ? (

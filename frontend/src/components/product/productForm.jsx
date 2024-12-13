@@ -121,7 +121,7 @@ const ProductForm = () => {
         >
           <option value="">Select Category</option>
           {options.map((option, index) => (
-            <option key={index} value={option.toLowerCase().replace(/\s/g, "")}>
+            <option key={index} value={option.replace(/\s/g, "")}>
               {option}
             </option>
           ))}

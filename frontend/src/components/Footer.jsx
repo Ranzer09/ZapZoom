@@ -11,14 +11,14 @@ export default function Footer() {
         className="text-center text-lg-start bg-primary "
         style={{ marginTop: "10px", color: "white" }}
       >
-        <Box className="">
+        <Box>
           <Box className="container text-center text-md-start mt-5">
             <Box className="row mt-3">
               <Box className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                 <Typography
                   variant="h6"
                   className="text-uppercase fw-bold mb-4"
-                  sx={{ textAlign: "center" }}
+                  sx={{ textAlign: "center", width: "100%" }}
                 >
                   ZapZoom
                 </Typography>

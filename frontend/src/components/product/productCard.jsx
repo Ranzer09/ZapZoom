@@ -5,6 +5,11 @@ import "../styles/DetailsStyles.css";
 import { useCartContext } from "../../hooks/useCartContext";
 import { fetchProducts } from "../../context/productContext";
 import Loading from "../../MUI Components/Loading";
+import { Box, Button, Card, Paper, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import { styled } from "@mui/material/styles";
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 export async function addProductToCart(email, product, user) {
@@ -30,12 +35,23 @@ export async function addProductToCart(email, product, user) {
   return cartData; // Handle the updated cart data as needed
 }
 
+const StyledButton = styled(Button)(({ theme }) => ({
+  minWidth: "30px",
+  height: "30px",
+  borderRadius: "50%",
+  backgroundColor: theme.palette.primary.main,
+  color: "white",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.dark,
+  },
+}));
+
 const ProductCard = ({ product }) => {
   const { dispatch: cartdispatch, cart } = useCartContext();
   const { dispatch: productdispatch } = useProductContext();
-  const [req_quanity, setReq_Quantity] = useState(0);
+  const [req_quanity, setReq_Quantity] = useState(1);
   const { user, loading } = useAuthContext();
-  let image = `https://dummyjson.com/image/400x200/008080/ffffff?text=${product.name}`;
+  let image = `https://dummyjson.com/image/600x400/008080/ffffff?text=${product.name}`;
 
   const handleAdd = () => {
     if (req_quanity === 0) return;
@@ -79,7 +95,7 @@ const ProductCard = ({ product }) => {
         fetchProducts(user, productdispatch);
       })
       .catch((error) => console.error("Error:", error));
-    setReq_Quantity(0);
+    setReq_Quantity(1);
   };
 
   const handleIncrement = () => {
@@ -103,52 +119,160 @@ const ProductCard = ({ product }) => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="product-card">
-          <img
-            loading="lazy"
-            src={image}
-            alt={product.name}
-            className="object-cover mb-2"
-            style={{
-              height: "100%",
-              width: "80%",
-              justifySelf: "center",
-              marginBottom: "20px",
-            }}
-          />
-          <h3 className="product-name">{product.name}</h3>
-          <p className="product-price">category: {product.category}</p>
-          {/* <p className="product-price">qty: {product.qty}</p> */}
-          <p className="product-price">₹{product.price}</p>
-
-          <div className="req-qty flex justify-center ">
-            <button
-              className="qty-button "
-              onClick={() => {
-                handleDecrement();
-              }}
-            >
-              -
-            </button>
-            <p className="qty inline m-2">{req_quanity}</p>
-            <button
-              className="qty-button "
-              onClick={() => {
-                handleIncrement();
-              }}
-            >
-              +
-            </button>
-          </div>
-          <button
-            className="add-button"
-            onClick={() => {
-              handleAdd();
+        <Box
+          sx={{
+            width: { xs: "140px", md: "280px" },
+            height: { xs: "120px", md: "430px" },
+            marginTop: "20px",
+          }}
+        >
+          <Card
+            sx={{
+              paddingBottom: "10px",
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "20px",
             }}
           >
-            Add to Cart
-          </button>
-        </div>
+            <img
+              loading="lazy"
+              src={image}
+              alt={product.name}
+              className="object-cover mb-2"
+              style={{
+                minHeight: { xs: "105px", md: "250px" },
+                minWidth: { xs: "105px", md: "250px" },
+                justifySelf: "center",
+                marginBottom: "20px",
+              }}
+            />
+            <Box
+              sx={{
+                padding: "15px",
+                display: "grid",
+                gap: "8px",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: { xs: "14px", md: "18px" },
+                  fontWeight: "800",
+                  fontFamily: '"Manrope", sans-serif',
+                }}
+              >
+                {product.brand}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xs: "18px",
+                    md: "20px",
+                    fontFamily: '"Manrope", sans-serif',
+                  },
+                }}
+              >
+                {product.name}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: {
+                    xs: "16px",
+                    md: "18px",
+                    fontFamily: '"Manrope", sans-serif',
+                  },
+                }}
+              >
+                {product.category}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: { xs: "16px", md: "18px" },
+                  fontWeight: "1000",
+                  fontFamily: '"Manrope", sans-serif',
+                }}
+              >
+                ${product.price}.00
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <IconButton
+                onClick={handleDecrement}
+                disabled={req_quanity === 1}
+              >
+                <RemoveIcon />
+              </IconButton>
+              <Typography variant="body1" sx={{ margin: "0 10px" }}>
+                {req_quanity}
+              </Typography>
+              <IconButton onClick={handleIncrement}>
+                <AddIcon />
+              </IconButton>
+            </Box>
+            <Button
+              onClick={() => {
+                handleAdd();
+              }}
+            >
+              Add to Cart
+            </Button>
+          </Card>
+        </Box>
+
+        // <div className="product-card">
+        //   <img
+        //     loading="lazy"
+        //     src={image}
+        //     alt={product.name}
+        //     className="object-cover mb-2"
+        //     style={{
+        //       height: "100%",
+        //       width: "80%",
+        //       justifySelf: "center",
+        //       marginBottom: "20px",
+        //     }}
+        //   />
+        //   <h3 className="product-name">{product.name}</h3>
+        //   <p className="product-price">category: {product.category}</p>
+        //   <p className="product-price">{product.brand}</p>
+        //   <p className="product-price">₹{product.price}</p>
+
+        //   <div className="req-qty flex justify-center ">
+        //     <button
+        //       className="qty-button "
+        //       onClick={() => {
+        //         handleDecrement();
+        //       }}
+        //     >
+        //       -
+        //     </button>
+        //     <p className="qty inline m-2">{req_quanity}</p>
+        //     <button
+        //       className="qty-button "
+        //       onClick={() => {
+        //         handleIncrement();
+        //       }}
+        //     >
+        //       +
+        //     </button>
+        //   </div>
+        //   <button
+        //     className="add-button"
+        //     onClick={() => {
+        //       handleAdd();
+        //     }}
+        //   >
+        //     Add to Cart
+        //   </button>
+        // </div>
       )}
     </>
   );

@@ -26,7 +26,6 @@ function CartItem({ _id, index }) {
   let image = `https://dummyjson.com/image/250x250/008080/ffffff?text=${product?.name}`;
 
   const handleAdd = () => {
-    console.log(qty, "cart quantity");
     if (product?.qty - req_quantity < 1)
       return window.alert(
         "Product out of stock, try again later or decrease the quantity"
