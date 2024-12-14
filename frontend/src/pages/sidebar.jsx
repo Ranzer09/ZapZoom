@@ -15,11 +15,14 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
         width: { xs: "100%", lg: "16rem" },
         padding: 2,
         backgroundColor: "grey.200",
-        height: { xs: "80%", md: "inherit" },
+        height: { xs: "90%", md: "inherit" },
         borderRadius: 2,
         display: { xs: "grid", md: "block" },
         gridTemplateRows: { xs: "30px 140px" },
         columnGap: { xs: "20px" },
+        width: "275px",
+        justifySelf: "center",
+        margin: "auto",
       }}
     >
       <Typography
@@ -39,9 +42,13 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
         sx={{
           display: { xs: "grid", md: "block" },
           gridTemplateColumns: { xs: "repeat(3,1fr)" },
+          alignItems: { xs: "center" },
+          justifyContent: { xs: "center" },
+          margin: { xs: "auto", md: "inherit" },
+          gap: { xs: "10px", md: "inherit" },
         }}
       >
-        <Box>
+        <Box sx={{ width: { xs: "70px", md: "inherit" } }}>
           <Typography
             variant="body2"
             component="h3"
@@ -60,7 +67,7 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
             label="Category"
             z
             onChange={(e) => onFilterChange({ category: e.target.value })}
-            sx={{ fontSize: { xs: "0.75rem", lg: "1rem" } }} // Responsive font size
+            sx={{ fontSize: { xs: "0.75rem", lg: "1rem" }, width: "40px" }} // Responsive font size
           >
             <option value="">All</option>
             <option value="Fruit">Fruit</option>
@@ -70,7 +77,7 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
           </Select>
         </Box>
 
-        <Box>
+        <Box sx={{ width: { xs: "70px", md: "inherit" } }}>
           <Typography
             variant="body2"
             component="h3"
@@ -97,7 +104,7 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
           </Select>
         </Box>
 
-        <Box>
+        <Box sx={{ width: { xs: "70px", md: "inherit" } }}>
           <Typography
             variant="body2"
             component="h3"
@@ -116,7 +123,7 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
             label="Category"
             z
             onChange={(e) => onSortChange(e.target.value)}
-            sx={{ fontSize: { xs: "0.75rem", lg: "1rem" } }} // Responsive font size
+            sx={{ fontSize: { xs: "0.75rem", lg: "1rem" }, width: "40px" }} // Responsive font size
           >
             <option value="">Default</option>
             <option value="price-asc">Price: Low to High</option>
