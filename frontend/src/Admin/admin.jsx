@@ -6,7 +6,7 @@ function Admin() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   return (
-    <div className="h-screen grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+    <div className="xs:h-full lg:h-screen grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
       <Card
         style={{ height: "200px" }}
         href="/Api/admin/products/"

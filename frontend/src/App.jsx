@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 }
 function App() {
   return (
-    <div style={{ overflow: "auto" }}>
+    <div style={{ overflow: "auto", width: "100vw" }}>
       <BrowserRouter>
         <Navbar />
         <Router />

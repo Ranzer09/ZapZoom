@@ -15,7 +15,7 @@ export default function About() {
         style={{
           backgroundImage:
             "url('https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
-          width: "100vw",
+          width: "100%",
           height: "366px",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

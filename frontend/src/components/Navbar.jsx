@@ -60,6 +60,7 @@ export default function Navbar() {
         backdropFilter: isSticky && "blur(5px)",
         color: isSticky ? "black" : "white",
         top: isSticky ? 0 : "auto", // Adjust top dynamically
+        height: { xs: "78px", md: "88px" },
       }}
     >
       <Container maxWidth="2xl">
@@ -321,7 +322,7 @@ export default function Navbar() {
                           fontFamily: "monospace",
                           fontWeight: 700,
                           textDecoration: "none",
-                          color: !isSticky ? "black" : "white",
+                          color: "black",
                         }}
                         component={Link}
                         to={"/Api/admin"}
@@ -340,7 +341,7 @@ export default function Navbar() {
                             fontFamily: "monospace",
                             fontWeight: 700,
                             textDecoration: "none",
-                            color: !isSticky ? "black" : "white",
+                            color: "black",
                           }}
                           component={Link}
                           to={"/Api/business"}
