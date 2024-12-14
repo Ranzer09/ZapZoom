@@ -91,10 +91,16 @@ export default function Navbar() {
           </Typography>
           {!user ? (
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Button sx={{ fontSize: "18px" }} href="/Api/user/login">
+              <Button
+                sx={{ fontSize: "18px", color: "white" }}
+                href="/Api/user/login"
+              >
                 Login
               </Button>
-              <Button sx={{ fontSize: "18px" }} href="/Api/user/register">
+              <Button
+                sx={{ fontSize: "18px", color: "white" }}
+                href="/Api/user/register"
+              >
                 Sign up
               </Button>
             </Box>
@@ -258,10 +264,16 @@ export default function Navbar() {
               >
                 ZapZoom
               </Typography>
-              <Button sx={{ fontSize: "18px" }} href="/Api/user/login">
+              <Button
+                sx={{ fontSize: "18px", color: "white" }}
+                href="/Api/user/login"
+              >
                 Login
               </Button>
-              <Button sx={{ fontSize: "18px" }} href="/Api/user/register">
+              <Button
+                sx={{ fontSize: "18px", color: "white" }}
+                href="/Api/user/register"
+              >
                 Sign up
               </Button>
             </Box>

@@ -69,8 +69,10 @@ function BusinessProductManagement() {
               lg: "repeat(4,1fr)",
               xl: "repeat(5,1fr)",
             },
-            gap: "20px",
-            height: "100vh",
+            rowGap: "20px",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
           }}
         >
           {businessProducts.map((businessProduct) => (

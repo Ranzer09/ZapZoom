@@ -34,7 +34,10 @@ export default function Router() {
       {loading ? (
         <Loading />
       ) : (
-        <Box className="flex " sx={{ paddingTop: { xs: "78px", md: "88px" } }}>
+        <Box
+          className="flex "
+          sx={{ paddingTop: { xs: "78px", md: "88px" }, height: "100%" }}
+        >
           {" "}
           {/* {user?.isAdmin ? (
             <AdminSidebar />

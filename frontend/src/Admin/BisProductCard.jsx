@@ -71,8 +71,9 @@ const BusinessProductCard = ({ product }) => {
   ) : (
     <Box
       sx={{
-        width: { xs: "140px", md: "280px" },
-        height: { xs: "120px", md: "430px" },
+        width: { xs: "170px", md: "280px" },
+        height: { xs: "400px", md: "430px" },
+        margin: "auto",
         marginTop: "20px",
       }}
     >

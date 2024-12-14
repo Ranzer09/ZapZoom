@@ -45,7 +45,12 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
           <Typography
             variant="body2"
             component="h3"
-            sx={{ mb: 2, textAlign: "center" }}
+            sx={{
+              mb: 2,
+              textAlign: "center",
+              fontSize: { xs: "0.75rem", md: "1rem" },
+              marginTop: "10px",
+            }}
           >
             Category
           </Typography>
@@ -69,7 +74,12 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
           <Typography
             variant="body2"
             component="h3"
-            sx={{ mb: 2, textAlign: "center" }}
+            sx={{
+              mb: 2,
+              textAlign: "center",
+              fontSize: { xs: "0.75rem", md: "1rem" },
+              marginTop: "10px",
+            }}
           >
             Price
           </Typography>
@@ -91,7 +101,12 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
           <Typography
             variant="body2"
             component="h3"
-            sx={{ mb: 2, textAlign: "center" }}
+            sx={{
+              mb: 2,
+              textAlign: "center",
+              fontSize: { xs: "0.75rem", md: "1rem" },
+              marginTop: "10px",
+            }}
           >
             Sort By
           </Typography>
