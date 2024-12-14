@@ -26,8 +26,7 @@ export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const { user, loading } = useAuthContext();
   const { logout } = useLogout();
-  const [isSticky, setIsSticky] = useState(false);
-  const threshold = 1; // Adjust threshold value as needed (in pixels)
+  const [isSticky, setIsSticky] = React.useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -41,42 +40,26 @@ export default function Navbar() {
     logout();
   };
 
-  const prevScrollTop = useRef(0);
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    setIsSticky(offset > 0);
+  };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const threshold = 0;
-
-      if (window.scrollY > threshold && !prevScrollTop.current) {
-        setIsSticky(true);
-      } else if (window.scrollY <= threshold && prevScrollTop.current) {
-        setIsSticky(false);
-      }
-
-      prevScrollTop.current = window.scrollY;
-    };
-
-    const handleScrollRaf = () => {
-      requestAnimationFrame(handleScroll);
-    };
-
-    window.addEventListener("scroll", handleScrollRaf);
-
-    return () => {
-      window.removeEventListener("scroll", handleScrollRaf);
-    };
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <AppBar
+      position="fixed" // Important for sticky behavior
       sx={{
         transition:
-          "position 0.5s ease-out, background-color 0.5s ease-out, box-shadow 0.5s ease-out",
-        backgroundColor: isSticky && "rgba(255, 255, 255, 0.3)", // Semi-transparent white
-        backdropFilter: isSticky && "blur(5px)", // Reduced blur radius
+          "position 0.5s ease-out, background-color 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out",
+        backgroundColor: isSticky && "rgba(255, 255, 255, 0.3)",
+        backdropFilter: isSticky && "blur(5px)",
         color: isSticky ? "black" : "white",
-        boxShadow: isSticky ? "0px 2px 5px rgba(0, 0, 0, 0.1)" : "none",
-        position: isSticky ? "fixed" : "static",
+        top: isSticky ? 0 : "auto", // Adjust top dynamically
       }}
     >
       <Container maxWidth="2xl">
