@@ -5,6 +5,7 @@ import { getBusiness } from "./businessManagement";
 import "./styles/productManagement.css";
 import BusinessProductCard from "./BisProductCard";
 import Loading from "../MUI Components/Loading";
+import { Box } from "@mui/material";
 
 function BusinessProductManagement() {
   const { products } = useProductContext();
@@ -12,6 +13,10 @@ function BusinessProductManagement() {
   const [businesses, setBusinesses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [businessProducts, setBusinessProducts] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     // Fetch businesses when the user is available
@@ -52,14 +57,29 @@ function BusinessProductManagement() {
       {loading ? (
         <Loading />
       ) : businessProducts.length > 0 ? (
-        <div className="ProductManagement w-full ml-20">
+        // <div className="grid sm:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-5 gap-10"></div>
+        <Box
+          sx={{
+            display: "grid",
+            width: "100%",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2,1fr)",
+              md: "repeat(3,1fr)",
+              lg: "repeat(4,1fr)",
+              xl: "repeat(5,1fr)",
+            },
+            gap: "20px",
+            height: "100vh",
+          }}
+        >
           {businessProducts.map((businessProduct) => (
             <BusinessProductCard
               key={businessProduct._id}
               product={businessProduct}
             />
           ))}
-        </div>
+        </Box>
       ) : (
         <p
           style={{

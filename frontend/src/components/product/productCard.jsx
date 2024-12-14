@@ -35,21 +35,10 @@ export async function addProductToCart(email, product, user) {
   return cartData; // Handle the updated cart data as needed
 }
 
-const StyledButton = styled(Button)(({ theme }) => ({
-  minWidth: "30px",
-  height: "30px",
-  borderRadius: "50%",
-  backgroundColor: theme.palette.primary.main,
-  color: "white",
-  "&:hover": {
-    backgroundColor: theme.palette.primary.dark,
-  },
-}));
-
 const ProductCard = ({ product }) => {
   const { dispatch: cartdispatch, cart } = useCartContext();
   const { dispatch: productdispatch } = useProductContext();
-  const [req_quanity, setReq_Quantity] = useState(1);
+  const [req_quanity, setReq_Quantity] = useState(0);
   const { user, loading } = useAuthContext();
   let image = `https://dummyjson.com/image/600x400/008080/ffffff?text=${product.name}`;
 
@@ -95,7 +84,7 @@ const ProductCard = ({ product }) => {
         fetchProducts(user, productdispatch);
       })
       .catch((error) => console.error("Error:", error));
-    setReq_Quantity(1);
+    setReq_Quantity(0);
   };
 
   const handleIncrement = () => {
@@ -121,8 +110,8 @@ const ProductCard = ({ product }) => {
       ) : (
         <Box
           sx={{
-            width: { xs: "140px", md: "280px" },
-            height: { xs: "120px", md: "430px" },
+            width: { xs: "180px", md: "280px" },
+            height: { xs: "380px", md: "430px" },
             marginTop: "20px",
           }}
         >
@@ -206,7 +195,7 @@ const ProductCard = ({ product }) => {
             >
               <IconButton
                 onClick={handleDecrement}
-                disabled={req_quanity === 1}
+                disabled={req_quanity === 0}
               >
                 <RemoveIcon />
               </IconButton>

@@ -10,6 +10,7 @@ import Loading from "../MUI Components/Loading";
 import ResponsiveFeatures from "./ResponsiveFeatures";
 import AdminSidebar from "../Admin/adminSidebar";
 import BusinessSidebar from "../Admin/BusinessSidebar";
+import { Box, Typography } from "@mui/material";
 
 export function isTokenExpired(token) {
   if (!token) return true;
@@ -95,9 +96,9 @@ const Shop = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div className="w-full h-full">
-      {" "}
-      <div className="flex p-4 pt-4 gap-2 justify-between w-full">
+    <Box sx={{ width: "100vw", height: "100%" }}>
+      {/* <div className="w-full h-full"> */}{" "}
+      <div className="flex p-4 pt-2 gap-1 justify-between w-full">
         {/* {user?.isAdmin ? (
           <AdminSidebar />
         ) : user?.isBusiness ? (
@@ -106,12 +107,30 @@ const Shop = () => {
           <></>
         )} */}
         {products.length > 0 ? (
-          <div className="grid sm:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-5 gap-10">
-            {filteredProducts &&
+          <Box
+            sx={{
+              display: "grid",
+              width: "100%",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(2,1fr)",
+                lg: "repeat(3,1fr)",
+                xl: "repeat(5,1fr)",
+              },
+              rowGap: "20px",
+              height: "100%",
+            }}
+          >
+            {filteredProducts && filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
                 <ProductCard key={product._id} product={product} />
-              ))}
-          </div>
+              ))
+            ) : (
+              <Box>
+                <Typography>No Products to show</Typography>
+              </Box>
+            )}
+          </Box>
         ) : (
           <div
             style={{
@@ -123,7 +142,7 @@ const Shop = () => {
               width: "100%",
             }}
           >
-            <p>Nothing to see here!</p>
+            <Typography>No Products to show</Typography>
           </div>
         )}
         <Sidebar
@@ -133,7 +152,7 @@ const Shop = () => {
           onSortChange={handleSortChange}
         />
       </div>
-    </div>
+    </Box>
   );
 };
 export default Shop;

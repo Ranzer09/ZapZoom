@@ -3,6 +3,7 @@ import Loading from "../MUI Components/Loading";
 import UserCard from "./userCard";
 import { useState, useEffect } from "react";
 const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 function UserManagement() {
   const { user, loading: userLoading } = useAuthContext();
   const [users, setUsers] = useState([]);
@@ -19,6 +20,9 @@ function UserManagement() {
       console.error("Error fetching users:", error.message);
     }
   };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     getUsers();

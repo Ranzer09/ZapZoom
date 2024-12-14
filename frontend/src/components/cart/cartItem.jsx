@@ -44,7 +44,7 @@ function CartItem({ _id, index }) {
           method: "PATCH",
           body: JSON.stringify({
             ...Product,
-            qty: req_quantity,
+            qty: product.qty - (req_quantity - qty),
           }),
           //fix this, the quatntity is changing
           //since cart quantity is increasing and the same thing is being used again

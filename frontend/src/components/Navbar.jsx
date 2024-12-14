@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -27,6 +27,7 @@ export default function Navbar() {
   const { user, loading } = useAuthContext();
   const { logout } = useLogout();
   const [isSticky, setIsSticky] = useState(false);
+  const threshold = 1; // Adjust threshold value as needed (in pixels)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -40,23 +41,43 @@ export default function Navbar() {
     logout();
   };
 
-  const handleScroll = () => {
-    if (window.scrollY > 0) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
-  };
+  const prevScrollTop = useRef(0);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      const threshold = 0;
+
+      if (window.scrollY > threshold && !prevScrollTop.current) {
+        setIsSticky(true);
+      } else if (window.scrollY <= threshold && prevScrollTop.current) {
+        setIsSticky(false);
+      }
+
+      prevScrollTop.current = window.scrollY;
+    };
+
+    const handleScrollRaf = () => {
+      requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener("scroll", handleScrollRaf);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollRaf);
+    };
   }, []);
 
   return (
     <AppBar
-      position={isSticky ? "fixed" : "static"}
-      sx={{ transition: "position 0.3s ease-in-out" }}
+      sx={{
+        transition:
+          "position 0.5s ease-out, background-color 0.5s ease-out, box-shadow 0.5s ease-out",
+        backgroundColor: isSticky && "rgba(255, 255, 255, 0.3)", // Semi-transparent white
+        backdropFilter: isSticky && "blur(5px)", // Reduced blur radius
+        color: isSticky ? "black" : "white",
+        boxShadow: isSticky ? "0px 2px 5px rgba(0, 0, 0, 0.1)" : "none",
+        position: isSticky ? "fixed" : "static",
+      }}
     >
       <Container maxWidth="2xl">
         <Toolbar disableGutters>
@@ -78,7 +99,7 @@ export default function Navbar() {
               fontSize: "25px",
               transition: "color 0.3s ease",
               "&:hover": {
-                color: "black",
+                color: !isSticky ? "black" : "white",
               },
             }}
           >
@@ -86,18 +107,10 @@ export default function Navbar() {
           </Typography>
           {!user ? (
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Button
-                sx={{ fontSize: "18px" }}
-                className="flex-none text-white"
-                href="/Api/user/login"
-              >
+              <Button sx={{ fontSize: "18px" }} href="/Api/user/login">
                 Login
               </Button>
-              <Button
-                sx={{ fontSize: "18px" }}
-                className="flex-none text-white"
-                href="/Api/user/register"
-              >
+              <Button sx={{ fontSize: "18px" }} href="/Api/user/register">
                 Sign up
               </Button>
             </Box>
@@ -112,14 +125,15 @@ export default function Navbar() {
                     to={path}
                     sx={{
                       my: 2,
-                      color: "white",
+
+                      color: "inherit",
                       display: "block",
                       fontSize: "25px",
                       fontFamily: "'Karla', sans-serif",
                       fontWeight: 400,
                       transition: "color 0.3s ease",
                       "&:hover": {
-                        color: "black",
+                        color: !isSticky ? "black" : "white",
                       },
                     }}
                   >
@@ -132,14 +146,15 @@ export default function Navbar() {
                     onClick={handleCloseNavMenu}
                     sx={{
                       my: 2,
-                      color: "white",
+
+                      color: "inherit",
                       display: "block",
                       fontSize: "25px",
                       fontFamily: "'Karla', sans-serif",
                       fontWeight: 400,
                       transition: "color 0.3s ease",
                       "&:hover": {
-                        color: "black",
+                        color: !isSticky ? "black" : "white",
                       },
                     }}
                     component={Link}
@@ -155,14 +170,15 @@ export default function Navbar() {
                       onClick={handleCloseNavMenu}
                       sx={{
                         my: 2,
-                        color: "white",
+
+                        color: "inherit",
                         display: "block",
                         fontSize: "25px",
                         fontFamily: "'Karla', sans-serif",
                         fontWeight: 400,
                         transition: "color 0.3s ease",
                         "&:hover": {
-                          color: "black",
+                          color: !isSticky ? "black" : "white",
                         },
                       }}
                       component={Link}
@@ -176,14 +192,15 @@ export default function Navbar() {
                       onClick={handleCloseNavMenu}
                       sx={{
                         my: 2,
-                        color: "white",
+
+                        color: "inherit",
                         display: "block",
                         fontSize: "25px",
                         fontFamily: "'Karla', sans-serif",
                         fontWeight: 400,
                         transition: "color 0.3s ease",
                         "&:hover": {
-                          color: "black",
+                          color: !isSticky ? "black" : "white",
                         },
                       }}
                       component={Link}
@@ -200,13 +217,24 @@ export default function Navbar() {
                 }}
               >
                 <a
-                  className="no-underline text-white"
+                  className="no-underline"
                   href={"/Api/cart"}
-                  style={{ marginTop: "10px" }}
+                  style={{
+                    marginTop: "10px",
+                    color: isSticky ? "black" : "white",
+                  }}
                 >
                   <Minicart />
                 </a>
-                <Button className="flex-none text-white" onClick={handleLogout}>
+                <Button
+                  sx={{
+                    color: "inherit",
+                    "&:hover": {
+                      color: !isSticky ? "black" : "white",
+                    },
+                  }}
+                  onClick={handleLogout}
+                >
                   Logout
                 </Button>
               </Box>
@@ -240,24 +268,16 @@ export default function Navbar() {
                   fontSize: "35px",
                   transition: "color 0.3s ease",
                   "&:hover": {
-                    color: "black",
+                    color: !isSticky ? "black" : "white",
                   },
                 }}
               >
                 ZapZoom
               </Typography>
-              <Button
-                sx={{ fontSize: "18px" }}
-                className="flex-none text-white"
-                href="/Api/user/login"
-              >
+              <Button sx={{ fontSize: "18px" }} href="/Api/user/login">
                 Login
               </Button>
-              <Button
-                sx={{ fontSize: "18px" }}
-                className="flex-none text-white"
-                href="/Api/user/register"
-              >
+              <Button sx={{ fontSize: "18px" }} href="/Api/user/register">
                 Sign up
               </Button>
             </Box>
@@ -318,7 +338,7 @@ export default function Navbar() {
                           fontFamily: "monospace",
                           fontWeight: 700,
                           textDecoration: "none",
-                          color: "black",
+                          color: !isSticky ? "black" : "white",
                         }}
                         component={Link}
                         to={"/Api/admin"}
@@ -337,7 +357,7 @@ export default function Navbar() {
                             fontFamily: "monospace",
                             fontWeight: 700,
                             textDecoration: "none",
-                            color: "black",
+                            color: !isSticky ? "black" : "white",
                           }}
                           component={Link}
                           to={"/Api/business"}
@@ -395,7 +415,7 @@ export default function Navbar() {
                   fontSize: "35px",
                   transition: "color 0.3s ease",
                   "&:hover": {
-                    color: "black",
+                    color: !isSticky ? "black" : "white",
                   },
                 }}
               >
@@ -403,9 +423,12 @@ export default function Navbar() {
               </Typography>
               <Box sx={{ display: { xs: "flex", md: "none" } }}>
                 <a
-                  className="no-underline text-white"
+                  className="no-underline"
                   href={"/Api/cart"}
-                  style={{ marginTop: "10px" }}
+                  style={{
+                    marginTop: "10px",
+                    color: isSticky ? "black" : "white",
+                  }}
                 >
                   <Minicart />
                 </a>

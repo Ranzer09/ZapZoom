@@ -22,6 +22,7 @@ import ProductForm from "./components/product/productForm";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
 import Home from "./pages/Home";
+import { Box } from "@mui/material";
 
 export default function Router() {
   const { user, loading } = useAuthContext();
@@ -42,7 +43,14 @@ export default function Router() {
           ) : (
             <></>
           )} */}
-          <div className="admin w-full grid justify-items-center">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100vw",
+            }}
+          >
             <Routes>
               {/* <Route path="/Api" element={<Welcome />} /> */}
               <Route path="/Api/" element={<Home />} />
@@ -131,7 +139,7 @@ export default function Router() {
               {/* if route isnt found */}
               <Route path="*" element={<Navigate to="/Api" />} />
             </Routes>
-          </div>
+          </Box>
         </div>
       )}
     </>

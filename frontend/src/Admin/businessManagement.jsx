@@ -24,6 +24,10 @@ function BusinessManagement() {
   const [businesses, setBusinesses] = useState();
   const [loading, setLoading] = useState(true);
   //register business,fix bugs,smooth execution flow
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const fetchBusinesses = useCallback(async () => {
     try {
       setLoading(true);

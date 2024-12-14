@@ -95,6 +95,7 @@ const ProductForm = () => {
           type="text"
           onChange={(e) => setName(e.target.value)}
           value={name}
+          maxLength={20}
           className="mb-2"
           color={
             EmptyFields.includes("name")
@@ -134,6 +135,7 @@ const ProductForm = () => {
           type="text"
           onChange={(e) => setBrand(e.target.value)}
           value={brand}
+          maxLength={20}
           className="mb-2"
           color={
             EmptyFields.includes("brand")
@@ -152,6 +154,7 @@ const ProductForm = () => {
           onChange={(e) => setQty(e.target.value)}
           value={qty}
           className="mb-2"
+          max={10000}
           color={
             EmptyFields.includes("qty")
               ? "failure"
@@ -169,6 +172,7 @@ const ProductForm = () => {
           onChange={(e) => setPrice(e.target.value)}
           value={price}
           className="mb-2"
+          max={10000}
           color={
             EmptyFields.includes("price")
               ? "failure"

@@ -1,8 +1,14 @@
 import { Card } from "flowbite-react";
+import React, { useEffect } from "react";
+
 function Admin() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
-    <div className="Admin-container grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+    <div className="h-screen grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
       <Card
+        style={{ height: "200px" }}
         href="/Api/admin/products/"
         className="w-3/4 bg-gray-300 no-underline"
       >
@@ -13,7 +19,11 @@ function Admin() {
           Admins can manage the products in the product database
         </p>
       </Card>
-      <Card href="/Api/admin/users/" className="w-3/4 bg-gray-300 no-underline">
+      <Card
+        href="/Api/admin/users/"
+        className="w-3/4 bg-gray-300 no-underline"
+        style={{ height: "200px" }}
+      >
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Users
         </h5>
@@ -22,6 +32,7 @@ function Admin() {
         </p>
       </Card>
       <Card
+        style={{ height: "200px" }}
         href="/Api/admin/business/"
         className="w-3/4 bg-gray-300 no-underline"
       >

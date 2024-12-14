@@ -91,6 +91,7 @@ const BusinessForm = () => {
               type="text"
               onChange={(e) => setName(e.target.value)}
               value={name}
+              maxLength={30}
               className="mb-2"
             />
 
@@ -121,6 +122,7 @@ const BusinessForm = () => {
               type="number"
               onChange={(e) => setDate(e.target.value)}
               value={date}
+              maxLength={30}
               className="mb-2"
             />
 
@@ -129,6 +131,7 @@ const BusinessForm = () => {
             </Label>
             <TextInput
               type="email"
+              maxLength={30}
               onChange={(e) => setAdmin(e.target.value)}
               value={admin}
               className="mb-2"
