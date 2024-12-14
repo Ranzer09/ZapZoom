@@ -34,7 +34,7 @@ export default function Router() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="flex ">
+        <Box className="flex " sx={{ paddingTop: { xs: "78px", md: "88px" } }}>
           {" "}
           {/* {user?.isAdmin ? (
             <AdminSidebar />
@@ -140,7 +140,7 @@ export default function Router() {
               <Route path="*" element={<Navigate to="/Api" />} />
             </Routes>
           </Box>
-        </div>
+        </Box>
       )}
     </>
   );

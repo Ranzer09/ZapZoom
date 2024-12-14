@@ -55,7 +55,7 @@ export default function Navbar() {
       position="fixed" // Important for sticky behavior
       sx={{
         transition:
-          "position 0.5s ease-out, background-color 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out",
+          "position 0.2s ease-out, background-color 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out",
         backgroundColor: isSticky && "rgba(255, 255, 255, 0.3)",
         backdropFilter: isSticky && "blur(5px)",
         color: isSticky ? "black" : "white",

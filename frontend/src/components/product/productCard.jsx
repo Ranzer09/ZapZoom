@@ -110,8 +110,9 @@ const ProductCard = ({ product }) => {
       ) : (
         <Box
           sx={{
-            width: { xs: "180px", md: "280px" },
-            height: { xs: "380px", md: "430px" },
+            width: { xs: "150px", md: "280px" },
+            height: { xs: "350px", md: "430px" },
+            margin: "auto",
             marginTop: "20px",
           }}
         >

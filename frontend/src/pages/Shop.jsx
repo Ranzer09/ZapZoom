@@ -97,28 +97,47 @@ const Shop = () => {
     <Loading />
   ) : (
     <Box sx={{ width: "100vw", height: "100%" }}>
-      {/* <div className="w-full h-full"> */}{" "}
-      <div className="flex p-4 pt-2 gap-1 justify-between w-full">
-        {/* {user?.isAdmin ? (
-          <AdminSidebar />
-        ) : user?.isBusiness ? (
-          <BusinessSidebar />
-        ) : (
-          <></>
-        )} */}
+      <Box
+        sx={{
+          display: { xs: "grid", md: "flex" },
+          padding: "16px",
+          paddingTop: "8px",
+          gap: 1,
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          <Sidebar
+            filters={filters}
+            sort={sort}
+            onFilterChange={handleFilterChange}
+            onSortChange={handleSortChange}
+          />
+        </Box>
+
         {products.length > 0 ? (
           <Box
             sx={{
               display: "grid",
               width: "100%",
               gridTemplateColumns: {
-                xs: "1fr",
-                sm: "repeat(2,1fr)",
+                xs: "repeat(2,1fr)",
+                sm: "repeat(3,1fr)",
+                md: "repeat(2,1fr)",
                 lg: "repeat(3,1fr)",
                 xl: "repeat(5,1fr)",
               },
               rowGap: "20px",
+              columnGap: "15px",
               height: "100%",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             {filteredProducts && filteredProducts.length > 0 ? (
@@ -145,13 +164,15 @@ const Shop = () => {
             <Typography>No Products to show</Typography>
           </div>
         )}
-        <Sidebar
-          filters={filters}
-          sort={sort}
-          onFilterChange={handleFilterChange}
-          onSortChange={handleSortChange}
-        />
-      </div>
+        <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <Sidebar
+            filters={filters}
+            sort={sort}
+            onFilterChange={handleFilterChange}
+            onSortChange={handleSortChange}
+          />
+        </Box>
+      </Box>
     </Box>
   );
 };
