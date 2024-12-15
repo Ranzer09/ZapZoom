@@ -18,7 +18,7 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
         height: { xs: "90%", md: "inherit" },
         borderRadius: 2,
         display: { xs: "grid", md: "block" },
-        gridTemplateRows: { xs: "30px 140px" },
+        gridTemplateRows: { xs: "10px 140px" },
         columnGap: { xs: "20px" },
         width: "275px",
         justifySelf: "center",
@@ -31,7 +31,6 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
         sx={{
           fontSize: { xs: "1.25rem", lg: "1.5rem" },
           fontWeight: "semibold",
-          marginBottom: 2,
           textAlign: "center",
         }}
       >

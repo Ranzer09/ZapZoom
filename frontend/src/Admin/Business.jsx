@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { Card } from "flowbite-react";
 import React, { useEffect } from "react";
 function Business() {
@@ -5,7 +6,10 @@ function Business() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   return (
-    <div className="h-screen grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+    <Box
+      sx={{ height: { xs: "100%" } }}
+      className="h-screen grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center"
+    >
       <Card
         href="/Api/business/products/add"
         className="w-3/4 bg-gray-300 no-underline"
@@ -30,7 +34,7 @@ function Business() {
           Business Owners can manage their products in the product database.
         </p>
       </Card>
-    </div>
+    </Box>
   );
 }
 
