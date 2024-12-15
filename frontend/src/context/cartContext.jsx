@@ -27,7 +27,9 @@ export const fetchCart = async (
     console.error("Cart not found", error.message);
     setError(error.message);
   } finally {
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1250);
   }
 };
 

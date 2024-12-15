@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Minicart from "./cart/miniCart";
 import { useAuthContext } from "../hooks/Auth/useAuthContext";
 import { useLogout } from "../hooks/Auth/useLogout";
+import { useCartContext } from "../hooks/useCartContext";
 
 const pages = ["", "Shop", "About"];
 const navOptions = [
@@ -24,9 +25,14 @@ const navOptions = [
 export default function Navbar() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const { user, loading } = useAuthContext();
+  const { user, loading: userloading } = useAuthContext();
   const { logout } = useLogout();
   const [isSticky, setIsSticky] = React.useState(false);
+  const { cart, total_price, total_qty, loading } = useCartContext();
+
+  useEffect(() => {
+    console.log("cart", cart);
+  }, [total_price, total_qty, loading]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

@@ -6,14 +6,10 @@ import { useAuthContext } from "../../hooks/Auth/useAuthContext";
 import Loading from "../../MUI Components/Loading";
 
 function Minicart() {
-  const { cart, total_price, total_qty } = useCartContext();
-  const { user, loading } = useAuthContext();
+  const { cart, total_price, total_qty, loading } = useCartContext();
+  const { user, loading: userloading } = useAuthContext();
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    console.log("cart", cart);
-  }, [total_price, total_qty]);
-  if (loading) return <Loading />;
   let cost = 0;
   let number = 0;
   if (total_price && total_qty) {
