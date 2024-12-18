@@ -17,10 +17,10 @@ function UserCard({ user: userData }) {
         headers: { admin_id: user.id },
       });
       if (response.ok) {
-        console.log("user deleted");
+        //console.log("user deleted");
       }
     } catch (error) {
-      console.log(error, "error deleting user");
+      //console.log(error, "error deleting user");
     }
   };
 
@@ -29,7 +29,7 @@ function UserCard({ user: userData }) {
       const User = { email, token: user?.token };
       fetchCart(User, setError, setLoading, setCart);
     } catch (error) {
-      console.log("error fetching cart in users", error);
+      //console.log("error fetching cart in users", error);
     }
   }, []);
 

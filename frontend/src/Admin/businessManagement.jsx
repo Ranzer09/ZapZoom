@@ -12,7 +12,7 @@ export const getBusiness = async (user) => {
       headers: { Authorization: `Bearer ${user?.token}` },
     });
     const json = await response.json();
-    console.log(json, "businesses");
+    //console.log(json, "businesses");
     return json;
   } catch (error) {
     console.error("Error fetching businesses:", error.message);

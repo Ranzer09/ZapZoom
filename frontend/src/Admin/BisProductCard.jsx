@@ -50,19 +50,19 @@ const BusinessProductCard = ({ product }) => {
         },
       });
       // update values in context if sucessful
-      console.log(response);
+      //console.log(response);
       if (response.ok) fetchProducts(user, productdispatch);
       //rerender if everything is fine
     } catch (error) {
-      console.log("error occured", error);
+      //console.log("error occured", error);
     }
 
-    console.log(newProduct);
+    //console.log(newProduct);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target; // Ensure this matches the input field structure
-    console.log("cant edit");
+    //console.log("cant edit");
     setNewProduct({ ...newProduct, [name]: value });
   };
 

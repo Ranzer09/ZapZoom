@@ -7,7 +7,7 @@ function Business() {
   }, []);
   return (
     <Box
-      sx={{ height: { xs: "100%" } }}
+      sx={{ height: { xs: "100%" }, paddingTop: "40px" }}
       className="h-screen grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center"
     >
       <Card

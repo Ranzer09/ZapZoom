@@ -1,7 +1,7 @@
 const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 export const handleDelete = async (user, product, productdispatch) => {
-  console.log(user);
+  //console.log(user);
   try {
     if (!user) return;
     //api request to delete the product
@@ -20,6 +20,6 @@ export const handleDelete = async (user, product, productdispatch) => {
       productdispatch({ type: "DELETE_PRODUCT", payload: json });
     }
   } catch (error) {
-    console.log(error, "error in deletion");
+    //console.log(error, "error in deletion");
   }
 };

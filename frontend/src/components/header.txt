@@ -13,7 +13,7 @@ import Loading from "../MUI Components/Loading";
   const { cart, total_price, total_qty } = useCartContext();
 
   useEffect(() => {
-    console.log("header reloaded");
+    //console.log("header reloaded");
   }, [cart, total_price, total_qty]);
 
   const handleLogout = () => {

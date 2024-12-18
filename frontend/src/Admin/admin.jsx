@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { Card } from "flowbite-react";
 import React, { useEffect } from "react";
 
@@ -6,7 +7,7 @@ function Admin() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   return (
-    <div className="xs:h-full lg:h-screen grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+    <Box className="xs:h-full lg:h-screen grid my-5 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
       <Card
         style={{ height: "200px" }}
         href="/Api/admin/products/"
@@ -43,7 +44,7 @@ function Admin() {
           Admins can manage businesses in the database
         </p>
       </Card>
-    </div>
+    </Box>
   );
 }
 

@@ -36,7 +36,7 @@ export const AuthContextProvider = ({ children }) => {
     fetchUser();
   }, []);
 
-  //console.log('Auth Context state:',state)
+  ////console.log('Auth Context state:',state)
   if (loading) {
     return <Loading />;
   }

@@ -10,7 +10,7 @@ export async function fetchProducts(user, dispatch) {
       headers: { Authorization: `Bearer ${user?.token}` },
     });
     const json = await response.json();
-    console.log(json, "updated products");
+    //console.log(json, "updated products");
     if (response.ok) {
       dispatch({ type: "SET_PRODUCT", payload: json });
     } else {
@@ -33,7 +33,7 @@ export const ProductReducer = (state, action) => {
       };
     // case 'UPDATE_PRODUCT':{
     //     let product=state.products.find(p => p._id.toString() === action.payload._id);
-    //     console.log('updating')
+    //     //console.log('updating')
     //     return{
     //         products:[...state.products,{...product,qty:action.payload.qty,
     //             price:action.payload.price,name:action.payload.name}]
@@ -54,7 +54,7 @@ export const ProductContextProvider = ({ children }) => {
   }, [dispatch, user]);
 
   useEffect(() => {
-    console.log("useeffect");
+    //console.log("useeffect");
   }, [state.products, dispatch]);
   return (
     <ProductContext.Provider value={{ ...state, dispatch }}>

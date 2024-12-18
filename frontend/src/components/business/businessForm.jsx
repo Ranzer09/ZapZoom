@@ -24,7 +24,7 @@ const BusinessForm = () => {
       setInput("");
     } else if (mode === "remove")
       if (products.length > 0) {
-        console.log(variable);
+        //console.log(variable);
         setProducts(products.filter((name) => name !== variable));
       }
     return;
@@ -38,7 +38,7 @@ const BusinessForm = () => {
     }
 
     const business = { name, admin, date };
-    //console.log(product)
+    ////console.log(product)
     const response = await fetch(VITE_API_URL + "/api/business/register", {
       method: "POST",
       body: JSON.stringify(business),

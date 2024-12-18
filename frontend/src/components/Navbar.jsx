@@ -31,7 +31,7 @@ export default function Navbar() {
   const { cart, total_price, total_qty, loading } = useCartContext();
 
   useEffect(() => {
-    console.log("cart", cart);
+    //console.log("cart", cart);
   }, [total_price, total_qty, loading]);
 
   const handleOpenNavMenu = (event) => {
