@@ -15,7 +15,7 @@ const ProductForm = () => {
   const [Error, setError] = useState(null);
   const [EmptyFields, setEmptyFields] = useState(["empty"]);
 
-  const options = ["Vehicle", "Fruit", "Furniture"];
+  const options = ["Vehicle", "Fruit", "Furniture","Animal"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
