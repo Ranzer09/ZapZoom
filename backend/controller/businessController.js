@@ -15,7 +15,7 @@ const registerBusiness = async (req, res) => {
     console.log("Business Registered!", business);
     res.status(200).json({ name, admin });
   } catch (error) {
-    console.log(error);
+    console.log("Error has occoured", error);
     res.status(400).json({ error: error.message });
   }
 };

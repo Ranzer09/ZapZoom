@@ -144,7 +144,7 @@ const removeProductFromCart = async (req, res) => {
     await cart.save();
     res.status(200).json(cart);
   } catch (error) {
-    console.log(error.message);
+    console.log("Error has occoured", error.message);
     res.status(500).json({ message: error.message });
   }
 };

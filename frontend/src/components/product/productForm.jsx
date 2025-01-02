@@ -15,7 +15,7 @@ const ProductForm = () => {
   const [Error, setError] = useState(null);
   const [EmptyFields, setEmptyFields] = useState(["empty"]);
 
-  const options = ["Vehicle", "Fruit", "Furniture","Animal"];
+  const options = ["Vehicle", "Fruit", "Furniture", "Animal"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +33,6 @@ const ProductForm = () => {
         category,
         business: user?.email,
       };
-      ////console.log(product)
       const response = await fetch(VITE_API_URL + "/api/products", {
         method: "POST",
         body: JSON.stringify(product),
@@ -43,13 +42,10 @@ const ProductForm = () => {
         },
       });
       const json = await response.json();
-      //console.log(json);
-      ////console.log(json)
       if (!response.ok) {
         setError(json.error);
         if (json.EmptyFields) setEmptyFields(json.EmptyFields);
       }
-      ////console.log(Error,EmptyFields)
       if (response.ok) {
         setBrand("");
         setName("");
@@ -70,10 +66,9 @@ const ProductForm = () => {
         if (!response.ok) {
           setError(json.error);
         }
-        ////console.log("It got uploaded!",json)
       }
     } catch (error) {
-      //console.log("error in posting product", error);
+      console.log("error in posting product", error);
     }
   };
   if (loading) {

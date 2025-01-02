@@ -26,7 +26,6 @@ export const useRegister = () => {
       if (!response.ok) {
         setLoading(false);
         setError(json.error);
-        //console.log("here is the error", json);
       }
 
       if (response.ok) {
@@ -41,7 +40,7 @@ export const useRegister = () => {
         navigate("/Api/");
       }
     } catch (err) {
-      //console.log(err);
+      console.log("Error occured", err);
     }
   };
   return { register, Loading, Error };

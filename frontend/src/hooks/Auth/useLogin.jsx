@@ -15,7 +15,6 @@ export const useLogin = () => {
 
     //send post request to create user
     try {
-      //console.log(VITE_API_URL);
       const response = await fetch(VITE_API_URL + "/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -27,7 +26,6 @@ export const useLogin = () => {
       if (!response.ok) {
         setLoading(false);
         setError(json.error);
-        //console.log(json.error);
       }
 
       if (response.ok) {
@@ -39,7 +37,7 @@ export const useLogin = () => {
         navigate("/Api/");
       }
     } catch (err) {
-      //console.log(err);
+      console.log("Error occured", err);
     }
   };
   return { login, Loading, Error };

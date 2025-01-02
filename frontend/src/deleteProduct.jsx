@@ -20,6 +20,6 @@ export const handleDelete = async (user, product, productdispatch) => {
       productdispatch({ type: "DELETE_PRODUCT", payload: json });
     }
   } catch (error) {
-    //console.log(error, "error in deletion");
+    console.log("Error has occoured", error, "error in deletion");
   }
 };

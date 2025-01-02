@@ -31,7 +31,6 @@ export async function addProductToCart(email, product, user) {
   }
 
   const cartData = await response.json();
-  ////console.log(cartData,'responded')
   return cartData; // Handle the updated cart data as needed
 }
 
@@ -63,7 +62,6 @@ const ProductCard = ({ product }) => {
     cartdispatch({ type: "UPDATE_PRODUCT", payload: Product });
     addProductToCart(user?.email, Product, user)
       .then((cart) => {
-        ////console.log("Cart updated sucessfully",cart)
         // Second API call to update info
         return fetch(VITE_API_URL + `/api/products/${Product.id}`, {
           method: "PATCH",

@@ -4,7 +4,6 @@ import { useAuthContext } from "./hooks/Auth/useAuthContext";
 
 const ProtectedRoute = ({ children, type }) => {
   const { user, loading } = useAuthContext();
-  //console.log(type,'type')
   const isAuthorized = useMemo(() => {
     return !loading && user && user[type];
   }, [loading, user, type]);

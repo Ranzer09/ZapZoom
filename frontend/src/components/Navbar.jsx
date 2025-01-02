@@ -30,9 +30,7 @@ export default function Navbar() {
   const [isSticky, setIsSticky] = React.useState(false);
   const { cart, total_price, total_qty, loading } = useCartContext();
 
-  useEffect(() => {
-    //console.log("cart", cart);
-  }, [total_price, total_qty, loading]);
+  useEffect(() => {}, [total_price, total_qty, loading]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

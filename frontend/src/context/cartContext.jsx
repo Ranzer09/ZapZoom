@@ -90,7 +90,6 @@ export const CartReducer = (state, action) => {
     case "REMOVE_PRODUCT": {
       const { _id, qty, price } = action.payload;
       const updatedCart = state.cart.filter((p) => p._id !== _id);
-      ////console.log(updatedCart,state.total_price - qty * price, state.total_qty - qty,)
       return {
         ...state,
         cart: updatedCart,

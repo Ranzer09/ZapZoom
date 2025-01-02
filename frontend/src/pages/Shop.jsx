@@ -63,7 +63,7 @@ const Shop = () => {
     }
 
     if (isTokenExpired(user?.token)) {
-      ////console.log("Token is expired");
+      console.log("Token is expired");
       logout();
     }
     // Redirect if user is not logged in

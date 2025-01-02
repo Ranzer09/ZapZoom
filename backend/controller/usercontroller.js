@@ -23,7 +23,7 @@ const loginUser = async (req, res) => {
       isBusiness: user.isBusiness,
     });
   } catch (error) {
-    console.log(error);
+    console.log("Error has occoured", error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
       isBusiness: user.isBusiness,
     });
   } catch (error) {
-    console.log(error);
+    console.log("Error has occoured", error);
     res.status(400).json({ error: error.message });
   }
 };

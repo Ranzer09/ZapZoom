@@ -24,7 +24,6 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
         }
       })
       .then((json) => {
-        //console.log("Business Verified", json);
         fetchdata();
         return fetch(VITE_API_URL + "/api/user/register/" + admin, {
           method: "PATCH",
@@ -37,11 +36,9 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
           throw new Error("Unable to verify user");
         }
       })
-      .then((json2) => {
-        //console.log("Business and user Verified", json2);
-      })
+      .then((json2) => {})
       .catch((error) => {
-        //console.log("Error in verification", error);
+        console.log("Error in verification", error);
       });
   };
 
@@ -52,11 +49,10 @@ const BusinessCard = memo(({ business, user, loading, fetchdata }) => {
       });
       const json = (await response.json()) || null;
       if (response.ok) {
-        //console.log("Business Deleted", json);
         fetchdata();
       } else throw new Error("Unable to Delete");
     } catch (error) {
-      //console.log("error in deletion", error);
+      console.log("error in deletion", error);
     }
   };
 

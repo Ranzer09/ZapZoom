@@ -17,7 +17,7 @@ export const useLogout = () => {
       dispatch({ type: "LOGOUT" });
       navigate("/");
     } catch (err) {
-      //console.log(err)
+      console.log("Error occured", err);
     }
   };
   return { logout };

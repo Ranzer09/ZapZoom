@@ -27,7 +27,7 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.log("Error has occoured", error);
   });
 
 app.use(express.json());
