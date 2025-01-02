@@ -1,0 +1,56 @@
+.user {
+    display: grid;
+    justify-content: center;
+    width:14rem;
+      height: fit-content;
+      background-color: white; 
+      padding: 1rem; 
+      border: 1px solid #ccc; 
+      border-radius: 1rem; 
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+      margin-top: 1rem;
+    }
+.name{
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    cursor: pointer;
+    text-align: center;
+}
+
+.email
+ {
+    font-size: 0.875rem; 
+    color: #2d3748; 
+    justify-self: center;
+}
+.delete-button {
+    background-color: #c40000; 
+    color: white;
+    border-radius: 0.25rem;
+    padding: 8px; 
+    cursor: pointer;
+    width: fit-content;
+    transition: all 0.3s ease; /* Smooth transition */
+
+    justify-self: center;
+  }
+
+.carting{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 20px 20px 20px;
+    gap: 20px;
+    justify-content: space-between;
+    width: 150px;
+    margin-inline: auto;
+    border-radius: 20px;
+    border: grey solid 1px;
+    margin-block: 20px;
+    padding-inline: 20px;
+    padding-block: 10px;
+}
+
+.cart-name{
+  text-align: center;
+  font-size: 1.5rem;
+}

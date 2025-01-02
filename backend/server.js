@@ -1,39 +1,41 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const userRoutes= require('./routes/user')
-const productRoutes= require('./routes/products')
-const cors = require('cors');
-const cartRoutes= require('./routes/cart')
-require('dotenv').config()
+const express = require("express");
+const mongoose = require("mongoose");
+const userRoutes = require("./routes/user");
+const productRoutes = require("./routes/products");
+const cartRoutes = require("./routes/cart");
+const businessRoutes = require("./routes/business");
+const adminRoutes = require("./routes/admin");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = ['http://localhost:3000', 'https://zapzoom.onrender.com'];
-app.use(cors({
-    origin: allowedOrigins, // Restrict to allowed origins
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-    credentials: true, // Allow credentials (e.g., cookies, authorization headers)
-}));
-
-//connect to db
-mongoose.connect(process.env.MONGO_URI)
-  .then(()=>{
-
-// start the Express server
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-}); 
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    credentials: true,
   })
-  .catch((error)=>{
-    console.log(error)
+);
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server listening on port ${PORT}`);
+    });
   })
+  .catch((error) => {
+    console.log(error);
+  });
 
 app.use(express.json());
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
-app.use('/api/user/',userRoutes)
-app.use('/api/products/',productRoutes)
-app.use('/api/cart/',cartRoutes)
-  
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
+app.use("/api/user/", userRoutes);
+app.use("/api/products/", productRoutes);
+app.use("/api/cart/", cartRoutes);
+app.use("/api/business/", businessRoutes);
+app.use("/api/", adminRoutes);

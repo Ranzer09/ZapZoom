@@ -1,0 +1,19 @@
+  .about-content {
+    text-align: center;
+    background-color: #8f8f8f6e;
+    padding:40px;
+    border-radius: 10px;
+  }
+  
+  .about-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .about-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  

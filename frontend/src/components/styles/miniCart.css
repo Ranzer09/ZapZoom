@@ -3,6 +3,10 @@
     display: inline-block; /* Ensures the container wraps the image */
 }
 
+.minicart{
+    margin: auto;
+}
+
 .cart-image {
     width: 50px; /* Adjust as needed */
     height: auto; /* Maintain aspect ratio */
@@ -22,5 +26,5 @@
 
 .bottom{
     justify-self: center;
-
+    font-size: 14px;
 }

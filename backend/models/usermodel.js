@@ -18,7 +18,15 @@ const userschema=new Schema({
     password:{
         type:String,
         required:true,
-    }
+    },
+    isAdmin:{
+        type:Boolean,
+        required:true,
+    },
+    isBusiness:{
+        type:Boolean,
+        required:true,
+    },
 })
 
 
@@ -51,8 +59,7 @@ userschema.statics.register=async function (email,username,password){
     //hashing password
     const salt=await bcrypt.genSalt(6)
     const hash =await bcrypt.hash(password,salt)
-
-    const user = await this.create({email,username,password:hash})
+    const user = await this.create({email,username,password:hash,isAdmin:false,isBusiness:false})
 
     return user
 }
