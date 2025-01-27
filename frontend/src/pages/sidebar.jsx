@@ -71,6 +71,7 @@ const Sidebar = ({ onFilterChange, onSortChange }) => {
             <option value="">All</option>
             <option value="Fruit">Fruit</option>
             <option value="Vehicle">Vehicle</option>
+            <option value="Animal">Animal</option>
             <option value="Furniture">Furniture</option>
             {/* <option value="sport">Sport</option> */}
           </Select>
