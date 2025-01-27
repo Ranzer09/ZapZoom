@@ -42,17 +42,30 @@ The project is deployed on **Render** for live accessibility.
 4. Configure the environment variables:
    - Create a `.env` file in the root directory.
    - Add the required variables (e.g., database URI, JWT secret).
-5. Run the development server:
+     
+5. Run the development backend server:
+   ```bash
+   cd backend
+   ```
+   ```bash
+   nodemon server
+   ```
+5. Run the development frontend server:
+      ```bash
+   cd frontend
+   ```
    ```bash
    npm start
    ```
-
+   
 ## Usage
 
 1. Browse products by categories and filters.
 2. Add products to the cart and adjust quantities.
 3. Sign up or log in to access personalized features.
 4. Explore business management or administrative moderation.
+5. Register as business to add products.
+7. Use Business@gmail.com and Business@123 to try out the Business features without register.
 
 ## Future Enhancements
 
